@@ -1,7 +1,12 @@
 <template>
-  <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="tableData.loading" @change="handleTableChange" bordered>
-    <template #title>Header</template>
-    <template #footer>Footer</template>
+  <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="tableData.loading" @change="handleTableChange" size="small" bordered>
+      <template #bodyCell="{ column, text }">
+        <template v-if="column.dataIndex === 'employeeName'">
+          <a>{{ text }}</a>
+        </template>
+      </template>
+      <template #title>Header</template>
+      <template #footer>Footer</template>
   </a-table>
 </template>
 
@@ -11,11 +16,11 @@ import { reactive, defineExpose } from 'vue';
 import { computed } from 'vue';
 
 const props = defineProps({
-  param: Object
+    param: Object
 })
 
 defineExpose({
-  refresh
+    refresh
 });
 
 const ajaxParam = reactive({
@@ -31,24 +36,30 @@ const columns = [
   {
     title: 'ID',
     dataIndex: 'id',
+    width: 1,
+    align: 'center'
   },
   {
     title: '姓名',
     className: 'column-money',
     dataIndex: 'employeeName',
+    align: 'center'
   },
   {
     title: '电话号码',
     className: 'column-money',
     dataIndex: 'phone',
+    align: 'center'
   },
   {
     title: '部门',
     dataIndex: 'department',
+    align: 'center'
   },
   {
     title: '薪水',
     dataIndex: 'salary',
+    align: 'center'
   },
 ];
 
@@ -64,6 +75,7 @@ const pagination = computed(() => ({
     total: tableData.numOfRecords,
     current: tableData.pagee,
     pageSize: tableData.pageSize,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
 }));
 
 function refresh() {
