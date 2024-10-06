@@ -17,7 +17,6 @@
     const mainTableRef = ref();
 
     function searchEvent(param) {
-        formState.phoneNum = param.phoneNum;
         formState.department = param.department;
         formState.employeeNamePrefix = param.employeeNamePrefix;
         mainTableRef.value.refresh()

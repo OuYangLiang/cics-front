@@ -3,12 +3,6 @@
         <a-form ref="formRef" name="advanced_search" class="ant-advanced-search-form" :model="formState" @finish="onFinish">
             <a-row :gutter="24">
                 <a-col :span="8">
-                    <a-form-item :name="`phoneNum`" :label="`手机号`">
-                        <a-input v-model:value="formState.phoneNum" placeholder="请输入手机号"></a-input>
-                    </a-form-item>
-                </a-col>
-
-                <a-col :span="8">
                     <a-form-item :name="`employeeNamePrefix`" :label="`员工姓名`">
                         <a-input v-model:value="formState.employeeNamePrefix" placeholder="请输入员工姓名"></a-input>
                     </a-form-item>

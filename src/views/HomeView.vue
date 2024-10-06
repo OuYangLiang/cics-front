@@ -4,12 +4,12 @@
             <div class="logo" />
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
                 <a-menu-item key="1">
-                    <pie-chart-outlined />
+                    <!-- <pie-chart-outlined /> -->
                     <span>Option 1</span>
                 </a-menu-item>
                 
                 <a-menu-item key="2">
-                    <desktop-outlined />
+                    <!-- <desktop-outlined /> -->
                     <span>Option 2</span>
                 </a-menu-item>
             </a-menu>
