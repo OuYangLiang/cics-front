@@ -26,9 +26,8 @@
                     <a-breadcrumb-item>Bill</a-breadcrumb-item>
                 </a-breadcrumb>
                 <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-                    <SearchComp />
-                    <a-divider />
-                    <TableComp />
+                    
+                    <ModuleView />
                 </div>
             </a-layout-content>
 
@@ -43,8 +42,7 @@ import { ref } from 'vue';
 const collapsed = ref(false);
 const selectedKeys = ref(['1']);
 
-import TableComp from '@/components/TableComp.vue';
-import SearchComp from '@/components/SearchComp.vue';
+import ModuleView from './employee/ModuleView.vue';
 </script>
 <style scoped>
 .logo {

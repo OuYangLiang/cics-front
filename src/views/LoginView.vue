@@ -49,7 +49,7 @@ const onFinish = values => {
       }
   }).catch(function (error) {
       console.log(error);
-  });  
+  });
 
 };
 
