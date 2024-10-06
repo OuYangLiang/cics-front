@@ -3,14 +3,19 @@
         <a-layout-sider v-model:collapsed="collapsed" collapsible>
             <div class="logo" />
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-                <a-menu-item key="1">
+                <a-menu-item key="data">
                     <!-- <pie-chart-outlined /> -->
-                    <span>Option 1</span>
+                    <span><RouterLink to="/data">Data</RouterLink></span>
                 </a-menu-item>
                 
-                <a-menu-item key="2">
+                <a-menu-item key="employee">
                     <!-- <desktop-outlined /> -->
-                    <span>Option 2</span>
+                    <span><RouterLink to="/employee">Employee</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item @click.prevent="logout" key="logout">
+                    <!-- <desktop-outlined /> -->
+                    <span>退出</span>
                 </a-menu-item>
             </a-menu>
         </a-layout-sider>
@@ -20,15 +25,15 @@
                 XXX管理系统
             </a-layout-header>
 
-            <a-layout-content style="margin: 0 16px">
-                <a-breadcrumb style="margin: 16px 0">
-                    
-                </a-breadcrumb>
-                <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-                    
-                    <ModuleView />
-                </div>
-            </a-layout-content>
+            <div v-if="selectedKeys == 'data'">
+                <DataModule />
+            </div>
+            <div v-else-if="selectedKeys == 'employee'">
+                <EmployeeModule />
+            </div>
+            <div v-else>
+                error
+            </div>
 
             <a-layout-footer style="text-align: center">
                 Ant Design ©2018 Created by Ant UED
@@ -38,10 +43,20 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-const collapsed = ref(false);
-const selectedKeys = ref(['1']);
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
-import ModuleView from './employee/ModuleView.vue';
+const collapsed = ref(false);
+const selectedKeys = ref([route.params.menu]);
+
+import EmployeeModule from './employee/ModuleView.vue';
+import DataModule from './data/ModuleView.vue';
+import router from '@/router';
+
+function logout() {
+    localStorage.removeItem('token');
+    router.push('/login')
+}
 </script>
 <style scoped>
 .logo {

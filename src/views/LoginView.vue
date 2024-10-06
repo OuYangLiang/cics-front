@@ -42,7 +42,7 @@ const onFinish = values => {
         const resp = response.data;
         if (resp.success) {
             localStorage.setItem('token', resp.data);
-            router.push('/');
+            router.push('/data');
         } else {
             alert(resp.errorMsg);
         }
