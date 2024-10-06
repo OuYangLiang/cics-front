@@ -1,30 +1,24 @@
 <template>
     <div>
-        <a-form ref="formRef" name="advanced_search" class="ant-advanced-search-form" :model="formState"
-            @finish="onFinish">
+        <a-form ref="formRef" name="advanced_search" class="ant-advanced-search-form" :model="formState" @finish="onFinish">
             <a-row :gutter="24">
-                <template v-for="i in 10" :key="i">
-                    <a-col v-show="expand || i <= 6" :span="8">
-                        <a-form-item :name="`field-${i}`" :label="`field-${i}`"
-                            :rules="[{ required: true, message: 'input something' }]">
-                            <a-input v-model:value="formState[`field-${i}`]" placeholder="placeholder"></a-input>
-                        </a-form-item>
-                    </a-col>
-                </template>
+                <a-col :span="8">
+                    <a-form-item :name="`employeeNamePrefix`" :label="`员工姓名`">
+                        <a-input v-model:value="formState.employeeNamePrefix" placeholder="请输入员工姓名"></a-input>
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
+                    <a-form-item :name="`department`" :label="`所在部门`">
+                        <a-input v-model:value="formState.department" placeholder="请输入员工所在部门"></a-input>
+                    </a-form-item>
+                </a-col>
             </a-row>
+            
             <a-row>
                 <a-col :span="24" style="text-align: right">
                     <a-button type="primary" html-type="submit">Search</a-button>
                     <a-button style="margin: 0 8px" @click="() => formRef.resetFields()">Clear</a-button>
-                    <a style="font-size: 12px" @click="expand = !expand">
-                        <template v-if="expand">
-                            <UpOutlined />
-                        </template>
-                        <template v-else>
-                            <DownOutlined />
-                        </template>
-                        Collapse
-                    </a>
                 </a-col>
             </a-row>
         </a-form>
@@ -32,20 +26,26 @@
 </template>
 <script setup>
 import { reactive, ref } from 'vue';
-const expand = ref(false);
 const formRef = ref();
 const formState = reactive({});
-const onFinish = values => {
-    console.log('Received values of form: ', values);
-    console.log('formState: ', formState);
+
+const emit = defineEmits(['searchEvent'])
+
+const onFinish = () => {
+    try {
+        emit("searchEvent", formState);
+    } catch (e) {
+        console.log(e);
+    }
+    
 };
 </script>
 <style scoped>
-#components-form-demo-advanced-search .ant-form {
+.ant-form {
     max-width: none;
 }
 
-#components-form-demo-advanced-search .search-result-list {
+.search-result-list {
     margin-top: 16px;
     border: 1px dashed #e9e9e9;
     border-radius: 2px;
@@ -62,7 +62,7 @@ const onFinish = values => {
     border-radius: 2px;
 }
 
-[data-theme='dark'] #components-form-demo-advanced-search .search-result-list {
+[data-theme='dark'] .search-result-list {
     border: 1px dashed #434343;
     background: rgba(255, 255, 255, 0.04);
 }
