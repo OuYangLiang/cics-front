@@ -2,7 +2,7 @@
     <SearchComp @searchEvent="searchEvent"/>
     <a-divider />
 
-    <TableComp ref="mainTableRef" :param="formState"/>
+    <TableComp ref="mainTableRef" :searchParam="formState"/>
 </template>
 
 <script setup>
@@ -19,7 +19,7 @@
     function searchEvent(param) {
         formState.department = param.department;
         formState.employeeNamePrefix = param.employeeNamePrefix;
-        mainTableRef.value.refresh()
+        mainTableRef.value.search()
     }
 
 </script>

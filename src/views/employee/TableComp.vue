@@ -1,5 +1,5 @@
 <template>
-  <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="tableData.loading" @change="handleTableChange" size="small" bordered>
+  <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, text }">
         <template v-if="column.dataIndex === 'employeeName'">
           <a>{{ text }}</a>
@@ -12,25 +12,24 @@
 
 <script setup>
 import axios from 'axios'
-import { reactive, defineExpose } from 'vue';
-import { computed } from 'vue';
+import { reactive, defineExpose, computed} from 'vue';
+import { useRequest } from 'vue-request';
+import { useRouter } from 'vue-router'
 
-const props = defineProps({
-    param: Object
-})
-
-defineExpose({
-    refresh
-});
+const router = useRouter()
+const props = defineProps({searchParam: Object})
+defineExpose({search});
 
 const ajaxParam = reactive({
     method: 'post',
     url: 'http://localhost:8080/employee/search',
     headers: {
-        "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyODM0MTksImlhdCI6MTcyODE5NzAxOSwidXNlcm5hbWUiOiJveWwifQ.1KVXY5ccqyFWD5gbmb5EKkWlSat5nAXCuxFjzenmzdY"
+        "Authorization":localStorage.getItem('token')
     },
-    data: props.param
+    data: props.searchParam
 })
+
+const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
@@ -67,9 +66,31 @@ const tableData = reactive({
     numOfRecords: 20,
     page: 1,
     pageSize: 10,
-    records: [],
-    loading: false
+    records: []
 })
+
+const {
+    run,
+    loading
+} = useRequest(queryData, {
+    onSuccess: (response, params) => {
+        if (response.data.success) {
+            tableData.numOfRecords = response.data.data.numOfRecords;
+            tableData.page = response.data.data.page;
+            tableData.pageSize = response.data.data.pageSize;
+            tableData.records = response.data.data.records;
+        } else {
+            alert(response.data.errorMsg);
+            if (response.data.errorCode == 0) {
+              router.push('/login');
+            }
+        }
+    },
+    onError: (error, params) => {
+        console.log(error);
+        alert(error);
+    }
+});
 
 const pagination = computed(() => ({
     total: tableData.numOfRecords,
@@ -78,29 +99,13 @@ const pagination = computed(() => ({
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
 }));
 
-function refresh() {
-    tableData.loading = true;
-    axios(ajaxParam).then(function (response) {
-        const resp = response.data;
-        if (resp.success) {
-            tableData.numOfRecords = resp.data.numOfRecords;
-            tableData.page = resp.data.page;
-            tableData.pageSize = resp.data.pageSize;
-            tableData.records = resp.data.records;
-        } else {
-            alert(resp.errorMsg);
-        }
-    }).catch(function (error) {
-        console.log(error);
-    });
-    tableData.loading = false;
+function search() {
+    run()
 }
 
 const handleTableChange = (pag, filters, sorter) => {
     ajaxParam.data.page=pag.current;
     ajaxParam.data.pageSize=pag.pageSize;
-    refresh()
+    run()
 };
-
-refresh()
 </script>

@@ -17,14 +17,8 @@ import { useRequest } from 'vue-request';
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
-const props = defineProps({
-    searchParam: Object
-})
-
-defineExpose({
-    search
-});
+const props = defineProps({searchParam: Object})
+defineExpose({search});
 
 const ajaxParam = reactive({
     method: 'post',
@@ -35,9 +29,7 @@ const ajaxParam = reactive({
     data: props.searchParam
 })
 
-const queryData = () => {
-    return axios(ajaxParam);
-};
+const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
@@ -116,5 +108,4 @@ const handleTableChange = (pag, filters, sorter) => {
     ajaxParam.data.pageSize=pag.pageSize;
     run()
 };
-
 </script>
