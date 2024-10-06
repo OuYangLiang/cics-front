@@ -16,11 +16,11 @@ import { reactive, defineExpose, computed} from 'vue';
 import { useRequest } from 'vue-request';
 
 const props = defineProps({
-    param: Object
+    searchParam: Object
 })
 
 defineExpose({
-    refresh
+    search
 });
 
 const ajaxParam = reactive({
@@ -29,7 +29,7 @@ const ajaxParam = reactive({
     headers: {
         "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyODM0MTksImlhdCI6MTcyODE5NzAxOSwidXNlcm5hbWUiOiJveWwifQ.1KVXY5ccqyFWD5gbmb5EKkWlSat5nAXCuxFjzenmzdY"
     },
-    data: props.param
+    data: props.searchParam
 })
 
 const queryData = () => {
@@ -88,6 +88,10 @@ const {
         } else {
             alert(response.data.errorMsg);
         }
+    },
+    onError: (error, params) => {
+        console.log(error);
+        alert(error);
     }
 });
 
@@ -98,7 +102,7 @@ const pagination = computed(() => ({
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
 }));
 
-function refresh() {
+function search() {
     run()
 }
 
