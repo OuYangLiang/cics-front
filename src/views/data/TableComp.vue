@@ -14,6 +14,9 @@
 import axios from 'axios'
 import { reactive, defineExpose, computed} from 'vue';
 import { useRequest } from 'vue-request';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps({
     searchParam: Object
@@ -27,7 +30,7 @@ const ajaxParam = reactive({
     method: 'post',
     url: 'http://localhost:8080/employee/search',
     headers: {
-        "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjgyODM0MTksImlhdCI6MTcyODE5NzAxOSwidXNlcm5hbWUiOiJveWwifQ.1KVXY5ccqyFWD5gbmb5EKkWlSat5nAXCuxFjzenmzdY"
+        "Authorization":localStorage.getItem('token')
     },
     data: props.searchParam
 })
@@ -86,6 +89,9 @@ const {
             tableData.records = response.data.data.records;
         } else {
             alert(response.data.errorMsg);
+            if (response.data.errorCode == 0) {
+              router.push('/login');
+            }
         }
     },
     onError: (error, params) => {

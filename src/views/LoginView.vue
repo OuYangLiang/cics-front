@@ -31,26 +31,24 @@ const formState = reactive({
 });
 
 const onFinish = values => {
-  console.log('Success:', values);
-
-  axios({
-      method: 'post',
-      url: 'http://localhost:8080/login',
-      data: {
-          username: values.username,
-          password: values.password
-      }
-  }).then(function (response) {
-      const resp = response.data;
-      if (resp.success) {
-          router.push('/');
-      } else {
-          alert(resp.errorMsg);
-      }
-  }).catch(function (error) {
-      console.log(error);
-  });
-
+    axios({
+        method: 'post',
+        url: 'http://localhost:8080/login',
+        data: {
+            username: values.username,
+            password: values.password
+        }
+    }).then(function (response) {
+        const resp = response.data;
+        if (resp.success) {
+            localStorage.setItem('token', resp.data);
+            router.push('/');
+        } else {
+            alert(resp.errorMsg);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
 };
 
 const onFinishFailed = errorInfo => {
