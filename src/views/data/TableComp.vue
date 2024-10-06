@@ -75,7 +75,6 @@ const tableData = reactive({
 })
 
 const {
-    data,
     run,
     loading
 } = useRequest(queryData, {
