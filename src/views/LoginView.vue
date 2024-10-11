@@ -21,6 +21,7 @@
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { notification } from 'ant-design-vue';
 
 const router = useRouter()
 
@@ -44,7 +45,12 @@ const onFinish = values => {
             localStorage.setItem('token', resp.data);
             router.push('/data');
         } else {
-            alert(resp.errorMsg);
+            // alert(resp.errorMsg);
+            notification.error({
+                message: '错误',
+                description: resp.errorMsg,
+                duration: 2,
+            });
         }
     }).catch(function (error) {
         console.log(error);
