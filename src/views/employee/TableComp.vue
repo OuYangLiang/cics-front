@@ -1,8 +1,8 @@
 <template>
   <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-      <template #bodyCell="{ column, text }">
+      <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'employeeName'">
-          <a>{{ text }}</a>
+          <a @click.prevent="viewDetail(record)">{{ record.employeeName }}</a>
         </template>
       </template>
       <template #title>Header</template>
@@ -19,6 +19,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const props = defineProps({searchParam: Object})
 defineExpose({search});
+const emit = defineEmits(['viewDetail'])
 
 const ajaxParam = reactive({
     method: 'post',
@@ -41,6 +42,7 @@ const columns = [
   {
     title: '姓名',
     className: 'column-money',
+    key: 'employeeName',
     dataIndex: 'employeeName',
     align: 'center'
   },
@@ -108,4 +110,12 @@ const handleTableChange = (pag, filters, sorter) => {
     ajaxParam.data.pageSize=pag.pageSize;
     run()
 };
+
+function viewDetail(param) {
+    try {
+        emit("viewDetail", param);
+    } catch (e) {
+        console.log(e);
+    }
+}
 </script>
