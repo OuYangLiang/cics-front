@@ -13,6 +13,11 @@
                     <span><RouterLink to="/employee">Employee</RouterLink></span>
                 </a-menu-item>
 
+                <a-menu-item key="guidaoheng">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/guidaoheng">轨道衡数据</RouterLink></span>
+                </a-menu-item>
+
                 <a-menu-item @click.prevent="logout" key="logout">
                     <!-- <desktop-outlined /> -->
                     <span>退出</span>
@@ -30,6 +35,9 @@
             </div>
             <div v-else-if="selectedKeys == 'employee'">
                 <EmployeeModule />
+            </div>
+            <div v-else-if="selectedKeys == 'guidaoheng'">
+                <GuidaohengModule />
             </div>
             <div v-else>
                 error
@@ -51,6 +59,7 @@ const selectedKeys = ref([route.params.menu]);
 
 import EmployeeModule from './employee/ModuleView.vue';
 import DataModule from './data/ModuleView.vue';
+import GuidaohengModule from './guidaoheng/ModuleView.vue';
 import router from '@/router';
 
 function logout() {
