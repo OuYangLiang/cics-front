@@ -29,23 +29,16 @@
             <a-descriptions-item label="总净重">{{ props.detailControl.record.zongjingzhong }}</a-descriptions-item>
             <a-descriptions-item label="总扣吨量">{{ props.detailControl.record.koudunzongliang }}</a-descriptions-item>
             <a-descriptions-item label="结算煤量">{{ props.detailControl.record.jiesuanmeiliang }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
-            <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
+        </a-descriptions>
+
+        <a-descriptions v-for="item in props.detailControl.record.dtData" title="每车详情">
+            <a-descriptions-item label="每车详情-序号">{{ item.dtSortno }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-车号">{{ item.dtChehao }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-车型">{{ item.dtChexing }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-毛重">{{ item.dtMaozhong }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-皮重">{{ item.dtPizhong }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-净重">{{ item.dtJingzhong }}</a-descriptions-item>
+            <a-descriptions-item label="每车详情-票重">{{ item.dtPiaozhong }}</a-descriptions-item>
         </a-descriptions>
     </a-drawer>
 </template>
