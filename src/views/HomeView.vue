@@ -26,7 +26,7 @@
         </a-layout-sider>
 
         <a-layout>
-            <a-layout-header style="background: #fff; padding: 0; text-align: center" >
+            <a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
                 XXX管理系统
             </a-layout-header>
 

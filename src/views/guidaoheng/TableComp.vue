@@ -1,11 +1,18 @@
 <template>
   <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.dataIndex === 'zmxdocNo'">
-          <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
-        </template>
-      </template>
+      <!-- <template #bodyCell="{ column, record }">
+          <template v-if="column.dataIndex === 'zmxdocNo'">
+              <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
+          </template>
+      </template> -->
       
+      <template #action="{ column, record }" >
+          <a @click.prevent="viewDetail(record)">数据详情</a>
+          <a-divider type="vertical" />
+          <a-popconfirm title="确认上报吗?" @confirm="upload(record.zmxdocNo)" >
+              <a>上报数据</a>
+          </a-popconfirm>
+      </template>
   </a-table>
 </template>
 
@@ -40,12 +47,25 @@ const columns = [
   {
     title: '所属二级公司',
     dataIndex: 'ssejdw',
-    align: 'left'
+    align: 'center'
   },
   {
     title: '所属三级公司',
     dataIndex: 'sssjdw',
-    align: 'left'
+    align: 'center'
+  },
+  {
+    title: '上报状态',
+    dataIndex: 'uploadStatus',
+    align: 'center'
+  },
+  {
+    title: '操作',
+    dataIndex: '',
+    align: 'center',
+    slots: {
+      customRender: 'action',
+    },
   }
 ];
 
@@ -102,5 +122,9 @@ function viewDetail(param) {
     } catch (e) {
         console.log(e);
     }
+}
+
+function upload(param) {
+    alert(param);
 }
 </script>
