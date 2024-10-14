@@ -57,7 +57,7 @@ const columns = [
   {
     title: '上报状态',
     width: 100,
-    dataIndex: 'uploadStatus',
+    dataIndex: 'uploadStatusDesc',
     align: 'center'
   },
   {
