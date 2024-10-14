@@ -1,21 +1,22 @@
 <template>
-  <div class="login-form">
-    <a-form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off"
-      @finish="onFinish" @finishFailed="onFinishFailed">
-      <a-form-item label="用户名" name="username" :rules="[{ required: true, message: '请输入用户名!' }]">
-        <a-input v-model:value="formState.username" />
-      </a-form-item>
+  <div class="fullscreen-background">
+    <div class="login-form">
+      <a-form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off"
+        @finish="onFinish" @finishFailed="onFinishFailed">
+        <a-form-item label="用户名" name="username" :rules="[{ required: true, message: '请输入用户名!' }]">
+          <a-input v-model:value="formState.username" />
+        </a-form-item>
 
-      <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入登录密码!' }]">
-        <a-input-password v-model:value="formState.password" />
-      </a-form-item>
+        <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入登录密码!' }]">
+          <a-input-password v-model:value="formState.password" />
+        </a-form-item>
 
-      <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-        <a-button type="primary" html-type="submit">Submit</a-button>
-      </a-form-item>
-    </a-form>
+        <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+          <a-button type="primary" html-type="submit">登录</a-button>
+        </a-form-item>
+      </a-form>
+    </div>
   </div>
-
 </template>
 <script setup>
 import { reactive } from 'vue';
@@ -65,7 +66,19 @@ const onFinishFailed = errorInfo => {
 
 <style scoped>
 .login-form {
+  position: fixed; /* 使div相对于视窗固定 */
+  top: 50%; /* 定位div至视窗的垂直中间 */
+  left: 50%; /* 定位div至视窗的水平中间 */
+  transform: translate(-50%, -50%); /* 使用transform将div向上和向左移动自身宽度和高度的一半，实现居中 */
   width: 500px;
-  margin: 200px auto auto 0;
+}
+
+.fullscreen-background {
+  width: 100vw;            /* 宽度为视口宽度 */
+  height: 100vh;           /* 高度为视口高度 */
+  background-image: url('/public/bg.jpg'); /* 背景图片路径 */
+  background-size: cover;  /* 背景图片覆盖整个div */
+  background-repeat: no-repeat; /* 背景图片不重复 */
+  background-position: center; /* 背景图片居中 */
 }
 </style>
