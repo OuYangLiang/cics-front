@@ -60,7 +60,8 @@ const selectedKeys = ref([route.params.menu]);
 import EmployeeModule from './employee/ModuleView.vue';
 import DataModule from './data/ModuleView.vue';
 import GuidaohengModule from './guidaoheng/ModuleView.vue';
-import router from '@/router';
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 function logout() {
     localStorage.removeItem('token');

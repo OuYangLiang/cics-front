@@ -58,7 +58,7 @@ const columns = [
     align: 'center'
   },
   {
-    title: '薪水',
+    title: '数字123',
     dataIndex: 'salary',
     align: 'center'
   },

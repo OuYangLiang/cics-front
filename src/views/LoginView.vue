@@ -76,7 +76,7 @@ const onFinishFailed = errorInfo => {
 .fullscreen-background {
   width: 100vw;            /* 宽度为视口宽度 */
   height: 100vh;           /* 高度为视口高度 */
-  background-image: url('/public/bg.jpg'); /* 背景图片路径 */
+  background-image: url('/public/bg.png'); /* 背景图片路径 */
   background-size: cover;  /* 背景图片覆盖整个div */
   background-repeat: no-repeat; /* 背景图片不重复 */
   background-position: center; /* 背景图片居中 */
