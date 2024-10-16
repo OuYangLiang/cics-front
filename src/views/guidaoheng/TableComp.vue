@@ -1,10 +1,14 @@
 <template>
   <a-table :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <!-- <template #bodyCell="{ column, record }">
-          <template v-if="column.dataIndex === 'zmxdocNo'">
-              <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
+          <template v-if="column.dataIndex === 'uploadTime'">
+              {{ format(record.uploadTime) }}
           </template>
       </template> -->
+
+      <template #uploadTime="{ column, record }">
+          {{ format(record.uploadTime) }}
+      </template>
       
       <template #action="{ column, record }" >
           <a @click.prevent="viewDetail(record)">数据详情</a>
@@ -21,6 +25,7 @@ import axios from 'axios'
 import { reactive, defineExpose, computed} from 'vue';
 import { useRequest } from 'vue-request';
 import { useRouter } from 'vue-router'
+import moment from 'moment';
 
 const router = useRouter()
 const props = defineProps({searchParam: Object})
@@ -42,7 +47,6 @@ const columns = [
   {
     title: '操作',
     width: 200,
-    dataIndex: '',
     align: 'center',
     slots: {
       customRender: 'action',
@@ -58,6 +62,20 @@ const columns = [
     title: '上报状态',
     width: 100,
     dataIndex: 'uploadStatusDesc',
+    align: 'center'
+  },
+  {
+    title: '上报时间',
+    width: 100,
+    align: 'center',
+    slots: {
+      customRender: 'uploadTime',
+    },
+  },
+  {
+    title: '上报人',
+    width: 100,
+    dataIndex: 'operator',
     align: 'center'
   },
   {
@@ -239,5 +257,9 @@ function viewDetail(param) {
 
 function upload(param) {
     alert(param);
+}
+
+function format(param) {
+    return moment(param).format('YYYY-MM-DD');
 }
 </script>
