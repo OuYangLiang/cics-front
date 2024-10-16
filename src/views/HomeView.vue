@@ -18,6 +18,31 @@
                     <span><RouterLink to="/guidaoheng">轨道衡数据</RouterLink></span>
                 </a-menu-item>
 
+                <a-menu-item key="qichecheng">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/qichecheng">汽车衡数据</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item key="meicaiyang">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/meicaiyang">煤采样、煤堆采样数据</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item key="pidaimeicaiyang">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样数据</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item key="meizhi">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/meizhi">煤质数据</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item key="huayandan">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/huayandan">化验单数据信息</RouterLink></span>
+                </a-menu-item>
+                
                 <a-menu-item @click.prevent="logout" key="logout">
                     <!-- <desktop-outlined /> -->
                     <span>退出</span>

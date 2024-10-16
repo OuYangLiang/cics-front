@@ -73,6 +73,12 @@ const columns = [
     align: 'center'
   },
   {
+    title: '业务日期',
+    width: 100,
+    dataIndex: 'yewurq',
+    align: 'center'
+  },
+  {
     title: '车次',
     width: 100,
     dataIndex: 'zccheci',

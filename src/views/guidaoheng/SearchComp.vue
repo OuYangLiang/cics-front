@@ -8,6 +8,37 @@
                     </a-form-item>
                 </a-col>
 
+                <a-col :span="8">
+                    <a-form-item :name="`sssjdw`" :label="`所属三级公司`">
+                        <a-input v-model:value="formState.sssjdw" placeholder="请输入"></a-input>
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
+                    <a-form-item :name="`mykuangdianmc`" :label="`煤源矿点名称`">
+                        <a-input v-model:value="formState.mykuangdianmc" placeholder="请输入"></a-input>
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
+                    <a-form-item :name="`yewurqRange`" :label="`业务日期`">
+                        <!-- <a-input v-model:value="formState.yewurq" placeholder="请输入"></a-input> -->
+                        <a-range-picker v-model:value="formState.yewurqRange" :valueFormat="valueFormat" :format="dateFormat" />
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
+                    <a-form-item :name="`uploadTime`" :label="`上报时间`">
+                        <a-input v-model:value="formState.uploadTime" placeholder="请输入"></a-input>
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
+                    <a-form-item :name="`uploadStatus`" :label="`上报状态`">
+                        <a-input v-model:value="formState.uploadStatus" placeholder="请输入"></a-input>
+                    </a-form-item>
+                </a-col>
+
             </a-row>
             
             <a-row>
@@ -34,6 +65,9 @@ const onFinish = () => {
     }
     
 };
+
+const dateFormat = 'YYYY-MM-DD';
+const valueFormat = 'YYYY-MM-DD';
 </script>
 <style scoped>
 .ant-form {
