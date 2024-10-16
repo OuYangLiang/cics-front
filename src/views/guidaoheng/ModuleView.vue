@@ -32,6 +32,7 @@
         formState.sssjdw = param.sssjdw;
         formState.mykuangdianmc = param.mykuangdianmc;
         formState.yewurqRange = param.yewurqRange;
+        formState.uploadStatus = param.uploadStatus;
         
         mainTableRef.value.search()
     }

@@ -260,6 +260,6 @@ function upload(param) {
 }
 
 function format(param) {
-    return moment(param).format('YYYY-MM-DD');
+    return null == param ? '' : moment(param).format('YYYY-MM-DD');
 }
 </script>

@@ -28,14 +28,14 @@
                 </a-col>
 
                 <a-col :span="8">
-                    <a-form-item :name="`uploadTime`" :label="`上报时间`">
-                        <a-input v-model:value="formState.uploadTime" placeholder="请输入"></a-input>
-                    </a-form-item>
-                </a-col>
-
-                <a-col :span="8">
                     <a-form-item :name="`uploadStatus`" :label="`上报状态`">
-                        <a-input v-model:value="formState.uploadStatus" placeholder="请输入"></a-input>
+                        <!-- <a-input v-model:value="formState.uploadStatus" placeholder="请输入"></a-input> -->
+                        <a-select v-model:value="formState.uploadStatus">
+                            <a-select-option value="">全部</a-select-option>
+                            <a-select-option value="success">上报成功</a-select-option>
+                            <a-select-option value="failed">上报失败</a-select-option>
+                            <a-select-option value="pending">未上报</a-select-option>
+                        </a-select>
                     </a-form-item>
                 </a-col>
 
@@ -44,7 +44,7 @@
             <a-row>
                 <a-col :span="24" style="text-align: right">
                     <a-button type="primary" html-type="submit">Search</a-button>
-                    <a-button style="margin: 0 8px" @click="() => formRef.resetFields()">Clear</a-button>
+                    <!-- <a-button style="margin: 0 8px" @click="() => formRef.resetFields()">Clear</a-button> -->
                 </a-col>
             </a-row>
         </a-form>
@@ -52,8 +52,8 @@
 </template>
 <script setup>
 import { reactive, ref } from 'vue';
-const formRef = ref();
-const formState = reactive({});
+// const formRef = ref();
+const formState = reactive({uploadStatus:''});
 
 const emit = defineEmits(['searchEvent'])
 
