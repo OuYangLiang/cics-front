@@ -1,5 +1,5 @@
 <template>
-    <a-drawer width="940" placement="right" :closable=" false " :visible=" props.detailControl.visible " @close=" onClose ">
+    <a-drawer width="1240" placement="right" :closable=" false " :visible=" props.detailControl.visible " @close=" onClose ">
         <a-descriptions :title="props.detailControl.record.employeeName">
             <a-descriptions-item label="明细磅单号">{{ props.detailControl.record.zmxdocNo }}</a-descriptions-item>
             <a-descriptions-item label="所属二级公司">{{ props.detailControl.record.ssejdw }}</a-descriptions-item>
@@ -31,15 +31,7 @@
             <a-descriptions-item label="结算煤量">{{ props.detailControl.record.jiesuanmeiliang }}</a-descriptions-item>
         </a-descriptions>
 
-        <a-descriptions v-for="item in props.detailControl.record.dtData" title="每车详情">
-            <a-descriptions-item label="每车详情-序号">{{ item.dtSortno }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-车号">{{ item.dtChehao }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-车型">{{ item.dtChexing }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-毛重">{{ item.dtMaozhong }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-皮重">{{ item.dtPizhong }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-净重">{{ item.dtJingzhong }}</a-descriptions-item>
-            <a-descriptions-item label="每车详情-票重">{{ item.dtPiaozhong }}</a-descriptions-item>
-        </a-descriptions>
+        <a-table :columns="columns" :data-source="props.detailControl.record.dtData"  size="small" bordered />
     </a-drawer>
 </template>
 <script setup>
@@ -48,4 +40,97 @@ const props = defineProps({detailControl: Object})
 const onClose = () => {
     props.detailControl.visible = false;
 };
+
+const columns = [
+  {
+    title: '每车详情-序号',
+    dataIndex: 'dtSortno',
+    width: 100,
+    align: 'center'
+  },
+  {
+    title: '每车详情-车号',
+    width: 100,
+    dataIndex: 'dtChehao',
+    align: 'center'
+  },
+  {
+    title: '每车详情-车型',
+    width: 100,
+    dataIndex: 'dtChexing',
+    align: 'center'
+  },
+  {
+    title: '每车详情-毛重',
+    width: 100,
+    dataIndex: 'dtMaozhong',
+    align: 'center'
+  },
+  {
+    title: '每车详情-皮重',
+    dataIndex: 'dtPizhong',
+    width: 100,
+    align: 'center'
+  },
+  {
+    title: '每车详情-净重',
+    width: 100,
+    dataIndex: 'dtJingzhong',
+    align: 'center'
+  },
+  {
+    title: '每车详情-标重吨数',
+    width: 100,
+    dataIndex: 'dtBzdunshu',
+    align: 'center'
+  },
+  {
+    title: '每车详情-票重',
+    width: 100,
+    dataIndex: 'dtPiaozhong',
+    align: 'center'
+  },
+  {
+    title: '每车详情-盈吨',
+    width: 100,
+    dataIndex: 'dtYingdun',
+    align: 'center'
+  },
+  {
+    title: '每车详情-亏吨',
+    width: 100,
+    dataIndex: 'dtKuidun',
+    align: 'center'
+  },
+  {
+    title: '每车详情-运损',
+    width: 100,
+    dataIndex: 'dtYunsun',
+    align: 'center'
+  },
+  {
+    title: '每车详情-扣吨',
+    width: 100,
+    dataIndex: 'dtKoudun',
+    align: 'center'
+  },
+  {
+    title: '每车详情-检重时间',
+    width: 100,
+    dataIndex: 'dtCztime',
+    align: 'center'
+  },
+  {
+    title: '每车详情-检轻时间',
+    width: 100,
+    dataIndex: 'dtCqtime',
+    align: 'center'
+  },
+  {
+    title: '每车详情-过衡速度',
+    width: 100,
+    dataIndex: 'dtGhsudu',
+    align: 'center'
+  }
+];
 </script>
