@@ -64,6 +64,9 @@
             <div v-else-if="selectedKeys == 'guidaoheng'">
                 <GuidaohengModule />
             </div>
+            <div v-else-if="selectedKeys == 'qichecheng'">
+                <QichechengModule />
+            </div>
             <div v-else>
                 error
             </div>
@@ -85,6 +88,7 @@ const selectedKeys = ref([route.params.menu]);
 import EmployeeModule from './employee/ModuleView.vue';
 import DataModule from './data/ModuleView.vue';
 import GuidaohengModule from './guidaoheng/ModuleView.vue';
+import QichechengModule from './qichecheng/ModuleView.vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
