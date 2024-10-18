@@ -1,28 +1,24 @@
 <template>
-  <a-table :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-      <!-- <template #bodyCell="{ column, record }">
-          <template v-if="column.dataIndex === 'uploadTime'">
-              {{ format(record.uploadTime) }}
-          </template>
-      </template> -->
-
+  <a-popconfirm title="确认上报吗?" @confirm="upload()" >
+      <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" >
+        上传
+      </a-button>
+  </a-popconfirm>
+  <a-divider />
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #uploadTime="{ column, record }">
           {{ format(record.uploadTime) }}
       </template>
       
       <template #action="{ column, record }" >
           <a @click.prevent="viewDetail(record)">数据详情</a>
-          <a-divider type="vertical" />
-          <a-popconfirm title="确认上报吗?" @confirm="upload(record.zmxdocNo)" >
-              <a>上报数据</a>
-          </a-popconfirm>
       </template>
   </a-table>
 </template>
 
 <script setup>
 import axios from 'axios'
-import { reactive, defineExpose, computed} from 'vue';
+import { reactive, defineExpose, computed, toRefs} from 'vue';
 import { useRequest } from 'vue-request';
 import { useRouter } from 'vue-router'
 import moment from 'moment';
@@ -255,11 +251,63 @@ function viewDetail(param) {
     }
 }
 
-function upload(param) {
+function upload1(param) {
     alert(param);
 }
 
 function format(param) {
     return null == param ? '' : moment(param).format('YYYY-MM-DD');
 }
+
+const uploadState = reactive({
+  selectedRowKeys: [],
+  loading: false
+});
+
+const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
+
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    uploadState.selectedRowKeys = selectedRowKeys;
+  }
+};
+
+import { notification } from 'ant-design-vue';
+const upload = () => {
+    uploadState.loading = true;
+    axios({
+        method: 'post',
+        url: 'http://localhost:8080/guidaoheng/upload',
+        headers: {
+            "Authorization":localStorage.getItem('token')
+        },
+        data: {
+            ids: uploadState.selectedRowKeys,
+            operator: '欧'
+        }
+    }).then(function (response) {  
+        const resp = response.data;
+        if (resp.success) {
+            notification.success({
+                message: '上报成功',
+                description: '上报成功',
+                duration: 2,
+            });
+        } else {
+            notification.error({
+                message: '错误',
+                description: resp.errorMsg,
+                duration: 2,
+            });
+        }
+        uploadState.loading = false;
+    }).catch(function (error) {
+        uploadState.loading = false;
+        console.log(error);
+    });
+};
+
 </script>
+
+
+

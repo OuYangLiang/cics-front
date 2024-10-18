@@ -1,5 +1,8 @@
 <template>
-  <a-table :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+  <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" @click="upload">
+    上传
+  </a-button>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'employeeName'">
           <a @click.prevent="viewDetail(record)">{{ record.employeeName }}</a>
@@ -118,4 +121,26 @@ function viewDetail(param) {
         console.log(e);
     }
 }
+
+const uploadState = reactive({
+  selectedRowKeys: [],
+  loading: false
+});
+
+const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
+
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    uploadState.selectedRowKeys = selectedRowKeys;
+  }
+};
+
+const upload = () => {
+  uploadState.loading = true;
+  // ajax request after empty completing
+  setTimeout(() => {
+    uploadState.loading = false;
+    console.log(uploadState.selectedRowKeys)
+  }, 1000);
+};
 </script>
