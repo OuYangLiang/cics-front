@@ -6,12 +6,13 @@
   </a-popconfirm>
   <a-divider />
   <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-      <template #uploadTime="{ column, record }">
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.dataIndex === 'zmxdocNo'">
+          <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
+        </template>
+        <template v-if="column.dataIndex === 'uploadTime'">
           {{ format(record.uploadTime) }}
-      </template>
-      
-      <template #action="{ column, record }" >
-          <a @click.prevent="viewDetail(record)">数据详情</a>
+        </template>
       </template>
   </a-table>
 </template>
@@ -41,14 +42,6 @@ const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
-    title: '操作',
-    width: 200,
-    align: 'center',
-    slots: {
-      customRender: 'action',
-    },
-  },
-  {
     title: '明细磅单号',
     dataIndex: 'zmxdocNo',
     width: 100,
@@ -63,10 +56,8 @@ const columns = [
   {
     title: '上报时间',
     width: 100,
-    align: 'center',
-    slots: {
-      customRender: 'uploadTime',
-    },
+    dataIndex: 'uploadTime',
+    align: 'center'
   },
   {
     title: '上报人',
