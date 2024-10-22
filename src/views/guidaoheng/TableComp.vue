@@ -276,7 +276,7 @@ const upload = () => {
             ids: uploadState.selectedRowKeys,
             operator: '欧'
         }
-    }).then(function (response) {  
+    }).then(function (response) {
         const resp = response.data;
         if (resp.success) {
             notification.success({
@@ -291,6 +291,7 @@ const upload = () => {
                 duration: 2,
             });
         }
+        search();
         uploadState.loading = false;
     }).catch(function (error) {
         uploadState.loading = false;
