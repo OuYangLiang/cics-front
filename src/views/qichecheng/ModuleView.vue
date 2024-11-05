@@ -30,8 +30,6 @@
     function searchEvent(param) {
         formState.zmxdocNo = param.zmxdocNo;
         formState.sssjdw = param.sssjdw;
-        formState.mykuangdianmc = param.mykuangdianmc;
-        formState.yewurqRange = param.yewurqRange;
         formState.uploadStatus = param.uploadStatus;
         
         mainTableRef.value.search()

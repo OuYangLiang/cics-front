@@ -1,28 +1,25 @@
 <template>
-  <a-table :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-      <!-- <template #bodyCell="{ column, record }">
-          <template v-if="column.dataIndex === 'uploadTime'">
-              {{ format(record.uploadTime) }}
-          </template>
-      </template> -->
-
-      <template #uploadTime="{ column, record }">
+  <a-popconfirm title="确认上报吗?" @confirm="upload()" >
+      <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" >
+        上传
+      </a-button>
+  </a-popconfirm>
+  <a-divider />
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.dataIndex === 'zmxdocNo'">
+          <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
+        </template>
+        <template v-if="column.dataIndex === 'uploadTime'">
           {{ format(record.uploadTime) }}
-      </template>
-      
-      <template #action="{ column, record }" >
-          <a @click.prevent="viewDetail(record)">数据详情</a>
-          <a-divider type="vertical" />
-          <a-popconfirm title="确认上报吗?" @confirm="upload(record.zmxdocNo)" >
-              <a>上报数据</a>
-          </a-popconfirm>
+        </template>
       </template>
   </a-table>
 </template>
 
 <script setup>
 import axios from 'axios'
-import { reactive, defineExpose, computed} from 'vue';
+import { reactive, defineExpose, computed, toRefs} from 'vue';
 import { useRequest } from 'vue-request';
 import { useRouter } from 'vue-router'
 import moment from 'moment';
@@ -45,14 +42,6 @@ const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
-    title: '操作',
-    width: 200,
-    align: 'center',
-    slots: {
-      customRender: 'action',
-    },
-  },
-  {
     title: '明细磅单号',
     dataIndex: 'zmxdocNo',
     width: 100,
@@ -67,10 +56,8 @@ const columns = [
   {
     title: '上报时间',
     width: 100,
-    align: 'center',
-    slots: {
-      customRender: 'uploadTime',
-    },
+    dataIndex: 'uploadTime',
+    align: 'center'
   },
   {
     title: '上报人',
@@ -88,84 +75,6 @@ const columns = [
     title: '所属三级公司',
     width: 100,
     dataIndex: 'sssjdw',
-    align: 'center'
-  },
-  {
-    title: '煤源矿点名称',
-    width: 100,
-    dataIndex: 'mykuangdianmc',
-    align: 'center'
-  },
-  {
-    title: '煤源矿点编码',
-    width: 100,
-    dataIndex: 'mykuangdianbm',
-    align: 'center'
-  },
-  {
-    title: '车数',
-    width: 100,
-    dataIndex: 'cheshu',
-    align: 'center'
-  },
-  {
-    title: '计量单位',
-    width: 100,
-    dataIndex: 'jiliangdanwei',
-    align: 'center'
-  },
-  {
-    title: '总票重',
-    width: 100,
-    dataIndex: 'zongpiaozhong',
-    align: 'center'
-  },
-  {
-    title: '总毛重',
-    width: 100,
-    dataIndex: 'zongmaozhong',
-    align: 'center'
-  },
-  {
-    title: '总皮重',
-    width: 100,
-    dataIndex: 'zongpizhong',
-    align: 'center'
-  },
-  {
-    title: '总净重',
-    width: 100,
-    dataIndex: 'zongjingzhong',
-    align: 'center'
-  },
-  {
-    title: '总扣吨量',
-    width: 100,
-    dataIndex: 'koudunzongliang',
-    align: 'center'
-  },
-  {
-    title: '结算煤量',
-    width: 100,
-    dataIndex: 'jiesuanmeiliang',
-    align: 'center'
-  },
-  {
-    title: '总盈亏',
-    width: 100,
-    dataIndex: 'zongyingkui',
-    align: 'center'
-  },
-  {
-    title: '总盈吨',
-    width: 100,
-    dataIndex: 'zongyingdun',
-    align: 'center'
-  },
-  {
-    title: '总运损',
-    width: 100,
-    dataIndex: 'zongyunsun',
     align: 'center'
   }
 ];
@@ -225,11 +134,60 @@ function viewDetail(param) {
     }
 }
 
-function upload(param) {
-    alert(param);
-}
-
 function format(param) {
     return null == param ? '' : moment(param).format('YYYY-MM-DD');
 }
+
+const uploadState = reactive({
+  selectedRowKeys: [],
+  loading: false
+});
+
+const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
+
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    uploadState.selectedRowKeys = selectedRowKeys;
+  }
+};
+
+import { notification } from 'ant-design-vue';
+const upload = () => {
+    uploadState.loading = true;
+    axios({
+        method: 'post',
+        url: 'http://localhost:8080/qichecheng/upload',
+        headers: {
+            "Authorization":localStorage.getItem('token')
+        },
+        data: {
+            ids: uploadState.selectedRowKeys,
+            operator: '欧'
+        }
+    }).then(function (response) {
+        const resp = response.data;
+        if (resp.success) {
+            notification.success({
+                message: '上报成功',
+                description: '上报成功',
+                duration: 2,
+            });
+        } else {
+            notification.error({
+                message: '错误',
+                description: resp.errorMsg,
+                duration: 2,
+            });
+        }
+        search();
+        uploadState.loading = false;
+    }).catch(function (error) {
+        uploadState.loading = false;
+        console.log(error);
+    });
+};
+
 </script>
+
+
+
