@@ -42,6 +42,11 @@
                     <!-- <desktop-outlined /> -->
                     <span><RouterLink to="/huayandan">化验单数据信息</RouterLink></span>
                 </a-menu-item>
+
+                <a-menu-item key="kjhuayandan">
+                    <!-- <desktop-outlined /> -->
+                    <span><RouterLink to="/kjhuayandan">煤质快检（明细数据）</RouterLink></span>
+                </a-menu-item>
                 
                 <a-menu-item @click.prevent="logout" key="logout">
                     <!-- <desktop-outlined /> -->
@@ -67,6 +72,21 @@
             <div v-else-if="selectedKeys == 'qichecheng'">
                 <QichechengModule />
             </div>
+            <div v-else-if="selectedKeys == 'meicaiyang'">
+                <MeicaiyangModule />
+            </div>
+            <div v-else-if="selectedKeys == 'pidaimeicaiyang'">
+                <PidaimeicaiyangModule />
+            </div>
+            <div v-else-if="selectedKeys == 'meizhi'">
+                <MeizhiModule />
+            </div>
+            <div v-else-if="selectedKeys == 'huayandan'">
+                <HuayandanModule />
+            </div>
+            <div v-else-if="selectedKeys == 'kjhuayandan'">
+                <KjhuayandanModule />
+            </div>
             <div v-else>
                 error
             </div>
@@ -89,6 +109,11 @@ import EmployeeModule from './employee/ModuleView.vue';
 import DataModule from './data/ModuleView.vue';
 import GuidaohengModule from './guidaoheng/ModuleView.vue';
 import QichechengModule from './qichecheng/ModuleView.vue';
+import MeicaiyangModule from './meicaiyang/ModuleView.vue';
+import PidaimeicaiyangModule from './pidaimeicaiyang/ModuleView.vue';
+import MeizhiModule from './meizhi/ModuleView.vue';
+import HuayandanModule from './huayandan/ModuleView.vue';
+import KjhuayandanModule from './kjhuayandan/ModuleView.vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
