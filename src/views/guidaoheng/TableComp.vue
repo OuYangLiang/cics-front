@@ -5,7 +5,7 @@
       </a-button>
   </a-popconfirm>
   <a-divider />
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 300 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 400 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'zmxdocNo'">
           <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
@@ -44,7 +44,7 @@ const columns = [
   {
     title: '明细磅单号',
     dataIndex: 'zmxdocNo',
-    width: 100,
+    width: 200,
     align: 'center'
   },
   {
@@ -85,25 +85,25 @@ const columns = [
   },
   {
     title: '车次',
-    width: 100,
+    width: 200,
     dataIndex: 'zccheci',
     align: 'center'
   },
   {
     title: '车型',
-    width: 100,
+    width: 200,
     dataIndex: 'chexing',
     align: 'center'
   },
   {
     title: '煤源矿点名称',
-    width: 100,
+    width: 200,
     dataIndex: 'mykuangdianmc',
     align: 'center'
   },
   {
     title: '煤源矿点编码',
-    width: 100,
+    width: 200,
     dataIndex: 'mykuangdianbm',
     align: 'center'
   },

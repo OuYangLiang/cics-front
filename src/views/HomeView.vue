@@ -55,7 +55,7 @@
             </a-menu>
         </a-layout-sider>
 
-        <a-layout>
+        <a-layout >
             <a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
                 XXX管理系统
             </a-layout-header>
@@ -66,25 +66,25 @@
             <div v-else-if="selectedKeys == 'employee'">
                 <EmployeeModule />
             </div>
-            <div v-else-if="selectedKeys == 'guidaoheng'">
+            <div v-else-if="selectedKeys == 'guidaoheng'" style="min-height: 80vh">
                 <GuidaohengModule />
             </div>
-            <div v-else-if="selectedKeys == 'qichecheng'">
+            <div v-else-if="selectedKeys == 'qichecheng'" style="min-height: 80vh">
                 <QichechengModule />
             </div>
-            <div v-else-if="selectedKeys == 'meicaiyang'">
+            <div v-else-if="selectedKeys == 'meicaiyang'" style="min-height: 80vh">
                 <MeicaiyangModule />
             </div>
-            <div v-else-if="selectedKeys == 'pidaimeicaiyang'">
+            <div v-else-if="selectedKeys == 'pidaimeicaiyang'" style="min-height: 80vh">
                 <PidaimeicaiyangModule />
             </div>
-            <div v-else-if="selectedKeys == 'meizhi'">
+            <div v-else-if="selectedKeys == 'meizhi'" style="min-height: 80vh">
                 <MeizhiModule />
             </div>
-            <div v-else-if="selectedKeys == 'huayandan'">
+            <div v-else-if="selectedKeys == 'huayandan'" style="min-height: 80vh">
                 <HuayandanModule />
             </div>
-            <div v-else-if="selectedKeys == 'kjhuayandan'">
+            <div v-else-if="selectedKeys == 'kjhuayandan'" style="min-height: 80vh">
                 <KjhuayandanModule />
             </div>
             <div v-else>
