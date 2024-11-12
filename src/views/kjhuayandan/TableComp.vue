@@ -167,11 +167,19 @@ const upload = () => {
     }).then(function (response) {
         const resp = response.data;
         if (resp.success) {
-            notification.success({
-                message: '上报成功',
-                description: '上报成功',
-                duration: 2,
-            });
+          if (resp.data.code == 0) {
+                notification.success({
+                    message: '上报成功',
+                    description: '上报成功',
+                    duration: 2,
+                });
+            } else {
+                notification.error({
+                    message: '上报失败',
+                    description: 'code: ' + resp.data.code + ' msg: ' + resp.data.msg + ' data: ' + resp.data.data,
+                    duration: 20,
+                });
+            }
         } else {
             notification.error({
                 message: '错误',

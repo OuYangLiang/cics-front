@@ -3,15 +3,13 @@
         <a-layout-sider v-model:collapsed="collapsed" collapsible>
             <div class="logo" />
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-                <a-menu-item key="data">
-                    <!-- <pie-chart-outlined /> -->
+                <!-- <a-menu-item key="data">
                     <span><RouterLink to="/data">Data</RouterLink></span>
                 </a-menu-item>
                 
                 <a-menu-item key="employee">
-                    <!-- <desktop-outlined /> -->
                     <span><RouterLink to="/employee">Employee</RouterLink></span>
-                </a-menu-item>
+                </a-menu-item> -->
 
                 <a-menu-item key="guidaoheng">
                     <!-- <desktop-outlined /> -->
@@ -43,10 +41,9 @@
                     <span><RouterLink to="/huayandan">化验单数据信息</RouterLink></span>
                 </a-menu-item>
 
-                <a-menu-item key="kjhuayandan">
-                    <!-- <desktop-outlined /> -->
+                <!-- <a-menu-item key="kjhuayandan">
                     <span><RouterLink to="/kjhuayandan">煤质快检（明细数据）</RouterLink></span>
-                </a-menu-item>
+                </a-menu-item> -->
                 
                 <a-menu-item @click.prevent="logout" key="logout">
                     <!-- <desktop-outlined /> -->
@@ -60,13 +57,13 @@
                 XXX管理系统
             </a-layout-header>
 
-            <div v-if="selectedKeys == 'data'">
+            <!-- <div v-if="selectedKeys == 'data'">
                 <DataModule />
             </div>
             <div v-else-if="selectedKeys == 'employee'">
                 <EmployeeModule />
-            </div>
-            <div v-else-if="selectedKeys == 'guidaoheng'" style="min-height: 80vh">
+            </div> -->
+            <div v-if="selectedKeys == 'guidaoheng'" style="min-height: 80vh">
                 <GuidaohengModule />
             </div>
             <div v-else-if="selectedKeys == 'qichecheng'" style="min-height: 80vh">
@@ -84,9 +81,9 @@
             <div v-else-if="selectedKeys == 'huayandan'" style="min-height: 80vh">
                 <HuayandanModule />
             </div>
-            <div v-else-if="selectedKeys == 'kjhuayandan'" style="min-height: 80vh">
+            <!-- <div v-else-if="selectedKeys == 'kjhuayandan'" style="min-height: 80vh">
                 <KjhuayandanModule />
-            </div>
+            </div> -->
             <div v-else>
                 error
             </div>
@@ -105,8 +102,8 @@ const route = useRoute()
 const collapsed = ref(false);
 const selectedKeys = ref([route.params.menu]);
 
-import EmployeeModule from './employee/ModuleView.vue';
-import DataModule from './data/ModuleView.vue';
+// import EmployeeModule from './employee/ModuleView.vue';
+// import DataModule from './data/ModuleView.vue';
 import GuidaohengModule from './guidaoheng/ModuleView.vue';
 import QichechengModule from './qichecheng/ModuleView.vue';
 import MeicaiyangModule from './meicaiyang/ModuleView.vue';
