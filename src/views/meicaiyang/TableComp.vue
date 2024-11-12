@@ -44,7 +44,7 @@ const columns = [
   {
     title: '批次煤样标识',
     dataIndex: 'mybs',
-    width: 100,
+    width: 200,
     align: 'center'
   },
   {
@@ -66,16 +66,70 @@ const columns = [
     align: 'center'
   },
   {
-    title: '所属二级公司',
-    dataIndex: 'ssejdw',
-    width: 100,
-    align: 'center'
+      title: '所属二级公司',
+      width: 100,
+      dataIndex: 'ssejdw',
+      align: 'center'
   },
   {
-    title: '所属三级公司',
-    width: 100,
-    dataIndex: 'sssjdw',
-    align: 'center'
+      title: '所属二级公司代码',
+      width: 100,
+      dataIndex: 'ssejdwid',
+      align: 'center'
+  },
+  {
+      title: '所属三级公司',
+      width: 100,
+      dataIndex: 'sssjdw',
+      align: 'center'
+  },
+  {
+      title: '所属三级公司代码',
+      width: 100,
+      dataIndex: 'sssjdwid',
+      align: 'center'
+  },
+  {
+      title: '采样批煤量',
+      width: 100,
+      dataIndex: 'cypml',
+      align: 'center'
+  },
+  {
+      title: '采样单元数量',
+      width: 100,
+      dataIndex: 'cydysl',
+      align: 'center'
+  },
+  {
+      title: '数据源系统',
+      width: 200,
+      dataIndex: 'sjyxt',
+      align: 'center'
+  },
+  {
+      title: '数据推送单位',
+      width: 100,
+      dataIndex: 'sjtsdanwei',
+      align: 'center'
+  },
+  {
+      title: '数据推送日期',
+      width: 100,
+      dataIndex: 'xtscjlI',
+      align: 'center'
+  },
+  {
+      title: '数据推送时间',
+      width: 100,
+      dataIndex: 'xtscjlT',
+      align: 'center'
+  },
+  {
+      title: '数据上传方式',
+      width: 100,
+      dataIndex: 'sjscfs',
+      align: 'center'
   }
 ];
 
