@@ -44,7 +44,7 @@ const columns = [
   {
     title: '明细磅单号',
     dataIndex: 'zmxdocNo',
-    width: 100,
+    width: 200,
     align: 'center'
   },
   {
@@ -75,6 +75,126 @@ const columns = [
     title: '所属三级公司',
     width: 100,
     dataIndex: 'sssjdw',
+    align: 'center'
+  },
+  {
+    title: '发运站名称',
+    width: 100,
+    dataIndex: 'zsitename',
+    align: 'center'
+  },
+  {
+    title: '发运站编码',
+    width: 120,
+    dataIndex: 'zsitebm',
+    align: 'center'
+  },
+  {
+    title: '收货单位名称',
+    width: 100,
+    dataIndex: 'zname1',
+    align: 'center'
+  },
+  {
+    title: '收货单位编码',
+    width: 100,
+    dataIndex: 'zkunnr',
+    align: 'center'
+  },
+  {
+    title: '煤源矿点名称',
+    width: 200,
+    dataIndex: 'mykuangdianmc',
+    align: 'center'
+  },
+  {
+    title: '煤源矿点编码',
+    width: 120,
+    dataIndex: 'mykuangdianbm',
+    align: 'center'
+  },
+  {
+    title: '煤炭来源',
+    width: 100,
+    dataIndex: 'meitanlaiyuan',
+    align: 'center'
+  },
+  {
+    title: '煤炭来源编码',
+    width: 100,
+    dataIndex: 'meitanlaiyuanbm',
+    align: 'center'
+  },
+  {
+    title: '煤种',
+    width: 100,
+    dataIndex: 'meizhong',
+    align: 'center'
+  },
+  {
+    title: '煤种编码',
+    width: 100,
+    dataIndex: 'meizhongbm',
+    align: 'center'
+  },
+  {
+    title: '批煤过磅开始日期',
+    width: 100,
+    dataIndex: 'zbeginI',
+    align: 'center'
+  },
+  {
+    title: '批煤过磅开始时间',
+    width: 100,
+    dataIndex: 'zbeginT',
+    align: 'center'
+  },
+  {
+    title: '批煤过磅结束日期',
+    width: 100,
+    dataIndex: 'zendI',
+    align: 'center'
+  },
+  {
+    title: '批煤过磅结束时间',
+    width: 100,
+    dataIndex: 'zendT',
+    align: 'center'
+  },
+  {
+    title: '车队名称',
+    width: 100,
+    dataIndex: 'zname1Car',
+    align: 'center'
+  },
+  {
+    title: '发运量',
+    width: 100,
+    dataIndex: 'zmeng',
+    align: 'center'
+  },
+  {
+    title: '验收量',
+    width: 100,
+    dataIndex: 'zmengpod',
+    align: 'center'
+  },
+  {
+    title: '计量单位',
+    width: 100,
+    dataIndex: 'jiliangdanwei',
+    align: 'center'
+  },
+  {
+    title: '主磅单号',
+    width: 100,
+    dataIndex: 'zmasterNo',
+    align: 'center'
+  },
+  {
+    title: '车数',
+    width: 100,
+    dataIndex: 'cheshu',
     align: 'center'
   }
 ];
