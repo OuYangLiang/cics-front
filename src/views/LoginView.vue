@@ -44,7 +44,7 @@ const onFinish = values => {
         const resp = response.data;
         if (resp.success) {
             localStorage.setItem('token', resp.data);
-            router.push('/data');
+            router.push('/guidaoheng');
         } else {
             // alert(resp.errorMsg);
             notification.error({
