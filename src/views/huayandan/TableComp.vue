@@ -513,7 +513,7 @@ const upload = () => {
     }).then(function (response) {
         const resp = response.data;
         if (resp.success) {
-            if (resp.data.code == 0) {
+            if (resp.data) {
                 notification.success({
                     message: '上报成功',
                     description: '上报成功',
@@ -522,7 +522,7 @@ const upload = () => {
             } else {
                 notification.error({
                     message: '上报失败',
-                    description: 'code: ' + resp.data.code + ' msg: ' + resp.data.msg + ' data: ' + resp.data.data,
+                    description: '失败原因请从日志查询',
                     duration: 20,
                 });
             }
