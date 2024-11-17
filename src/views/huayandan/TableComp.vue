@@ -16,10 +16,11 @@
 
 <script setup>
 import axios from 'axios'
-import { reactive, defineExpose, computed, toRefs} from 'vue';
+import { reactive, defineExpose, computed, inject} from 'vue';
 import { useRequest } from 'vue-request';
 import { useRouter } from 'vue-router'
 import moment from 'moment';
+const cicsUrl = inject('cicsUrl')
 
 const router = useRouter()
 const props = defineProps({searchParam: Object})
@@ -28,7 +29,7 @@ const emit = defineEmits(['viewDetail'])
 
 const ajaxParam = reactive({
     method: 'post',
-    url: 'http://localhost:8080/huayandan/search',
+    url: cicsUrl + '/huayandan/search',
     headers: {
         "Authorization":localStorage.getItem('token')
     },
@@ -501,7 +502,7 @@ const upload = () => {
     uploadState.loading = true;
     axios({
         method: 'post',
-        url: 'http://localhost:8080/huayandan/upload',
+        url: cicsUrl + '/huayandan/upload',
         headers: {
             "Authorization":localStorage.getItem('token')
         },
@@ -541,6 +542,3 @@ const upload = () => {
 };
 
 </script>
-
-
-
