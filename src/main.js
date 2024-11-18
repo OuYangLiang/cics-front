@@ -8,5 +8,5 @@ import { provide } from 'vue';
 const app = createApp(App);
 
 
-app.provide( 'cicsUrl',  'http://localhost:8080')
+app.provide( 'cicsUrl',  'http://127.0.0.1:8080')
 app.use(Antd).use(router).mount('#app');

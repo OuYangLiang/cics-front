@@ -283,7 +283,7 @@ const upload = () => {
         },
         data: {
             ids: uploadState.selectedRowKeys,
-            operator: '欧'
+            operator: localStorage.getItem('currentLogin')
         }
     }).then(function (response) {
         const resp = response.data;
