@@ -10,6 +10,9 @@
         <template v-if="column.dataIndex === 'uploadTime'">
           {{ format(record.uploadTime) }}
         </template>
+        <template v-if="column.dataIndex === 'ywrq'">
+          {{ formatywrq(record.ywrq) }}
+        </template>
       </template>
   </a-table>
 </template>
@@ -43,6 +46,12 @@ const columns = [
     title: '批次煤样标识',
     dataIndex: 'mybs',
     width: 200,
+    align: 'center'
+  },
+  {
+    title: '业务日期',
+    width: 100,
+    dataIndex: 'ywrq',
     align: 'center'
   },
   {
@@ -481,6 +490,10 @@ function viewDetail(param) {
 }
 
 function format(param) {
+    return null == param ? '' : moment(param).format('YYYY-MM-DD HH:mm:ss');
+}
+
+function formatywrq(param) {
     return null == param ? '' : moment(param).format('YYYY-MM-DD');
 }
 

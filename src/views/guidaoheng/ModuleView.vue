@@ -4,7 +4,7 @@
             
         </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-            <SearchComp @searchEvent="searchEvent"/>
+            <SearchComp @searchEvent="searchEvent" :formState="formState" />
 
             <a-divider />
 
@@ -20,20 +20,14 @@
     import Detail from '@/views/guidaoheng/Detail.vue';
     
     import { ref, reactive } from 'vue'
-
-    const formState = reactive({ "page":1, "pageSize":10})
+    import moment from 'moment';
+    const formState = reactive({ "page":1, "pageSize":10, uploadStatus:'', ywrqRange: [moment().subtract(7, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')]})
 
     const detailControl = reactive({"visible":false, "record": {}})
 
     const mainTableRef = ref();
 
-    function searchEvent(param) {
-        formState.zmxdocNo = param.zmxdocNo;
-        formState.sssjdw = param.sssjdw;
-        formState.mykuangdianmc = param.mykuangdianmc;
-        formState.yewurqRange = param.yewurqRange;
-        formState.uploadStatus = param.uploadStatus;
-        
+    function searchEvent() {
         mainTableRef.value.search()
     }
 

@@ -13,48 +13,53 @@
 
                 <a-menu-item key="guidaoheng">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/guidaoheng">轨道衡数据</RouterLink></span>
+                    <span><RouterLink to="/guidaoheng">轨道衡台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="qichecheng">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/qichecheng">汽车衡数据</RouterLink></span>
+                    <span><RouterLink to="/qichecheng">汽车衡台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="meicaiyang">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/meicaiyang">煤采样、煤堆采样数据</RouterLink></span>
+                    <span><RouterLink to="/meicaiyang">汽车机械采样</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="pidaimeicaiyang">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样数据</RouterLink></span>
+                    <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="meizhi">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/meizhi">煤质数据</RouterLink></span>
+                    <span><RouterLink to="/meizhi">煤质数据台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="huayandan">
                     <!-- <desktop-outlined /> -->
-                    <span><RouterLink to="/huayandan">化验单数据信息</RouterLink></span>
+                    <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
                 </a-menu-item>
 
                 <!-- <a-menu-item key="kjhuayandan">
                     <span><RouterLink to="/kjhuayandan">煤质快检（明细数据）</RouterLink></span>
                 </a-menu-item> -->
                 
-                <a-menu-item @click.prevent="logout" key="logout">
-                    <!-- <desktop-outlined /> -->
-                    <span>退出</span>
-                </a-menu-item>
+                
             </a-menu>
         </a-layout-sider>
 
         <a-layout >
             <a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
-                XXX管理系统
+                承德热电煤炭数据直连管控平台
+
+                <div style="float:right; padding-right: 30px;" >
+                    <a-button type="link" @click.prevent="logout">退出</a-button>
+                </div>
+
+                <div style="float:right; padding-right: 30px;" >
+                    当前用户：{{ currentLogin }}
+                </div>
             </a-layout-header>
 
             <!-- <div v-if="selectedKeys == 'data'">
@@ -118,6 +123,8 @@ function logout() {
     localStorage.removeItem('token');
     router.push('/login')
 }
+
+const currentLogin = localStorage.getItem('currentLogin')
 </script>
 <style scoped>
 .logo {
