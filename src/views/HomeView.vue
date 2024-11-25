@@ -51,15 +51,19 @@
 
         <a-layout >
             <a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
-                承德热电煤炭数据直连管控平台
+                
+                <H1>
+                    承德热电煤炭数据直连管控平台
 
-                <div style="float:right; padding-right: 30px;" >
-                    <a-button type="link" @click.prevent="logout">退出</a-button>
-                </div>
+                    <div style="float:right; padding-right: 30px;" >
+                        <a-button type="link" @click.prevent="logout">退出</a-button>
+                    </div>
 
-                <div style="float:right; padding-right: 30px;" >
-                    当前用户：{{ currentLogin }}
-                </div>
+                    <div style="float:right; padding-right: 30px;" >
+                        <a-typography-text type="warning">当前用户：{{ currentLogin }}</a-typography-text>
+                    </div>
+                </H1>
+                
             </a-layout-header>
 
             <!-- <div v-if="selectedKeys == 'data'">
