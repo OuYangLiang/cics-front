@@ -3,13 +3,6 @@
         <a-layout-sider v-model:collapsed="collapsed" collapsible>
             <div class="logo" />
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-                <!-- <a-menu-item key="data">
-                    <span><RouterLink to="/data">Data</RouterLink></span>
-                </a-menu-item>
-                
-                <a-menu-item key="employee">
-                    <span><RouterLink to="/employee">Employee</RouterLink></span>
-                </a-menu-item> -->
 
                 <a-menu-item key="guidaoheng">
                     <!-- <desktop-outlined /> -->
@@ -66,12 +59,6 @@
                 
             </a-layout-header>
 
-            <!-- <div v-if="selectedKeys == 'data'">
-                <DataModule />
-            </div>
-            <div v-else-if="selectedKeys == 'employee'">
-                <EmployeeModule />
-            </div> -->
             <div v-if="selectedKeys == 'guidaoheng'" style="min-height: 80vh">
                 <GuidaohengModule />
             </div>
@@ -111,8 +98,6 @@ const route = useRoute()
 const collapsed = ref(false);
 const selectedKeys = ref([route.params.menu]);
 
-// import EmployeeModule from './employee/ModuleView.vue';
-// import DataModule from './data/ModuleView.vue';
 import GuidaohengModule from './guidaoheng/ModuleView.vue';
 import QichechengModule from './qichecheng/ModuleView.vue';
 import MeicaiyangModule from './meicaiyang/ModuleView.vue';

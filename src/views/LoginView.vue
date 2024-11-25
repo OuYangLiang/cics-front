@@ -1,5 +1,13 @@
 <template>
   <div class="fullscreen-background">
+    <div class="login-title">
+        承德热电煤炭
+    </div>
+
+    <div class="login-subtitle">
+        数据直连管控平台
+    </div>
+
     <div class="login-form">
       <a-form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off"
         @finish="onFinish" @finishFailed="onFinishFailed">
@@ -66,10 +74,28 @@ const onFinishFailed = errorInfo => {
 </script>
 
 <style scoped>
+.login-title {
+  position: fixed; /* 使div相对于视窗固定 */
+  font-size: 50px;
+  color: #898181;;
+  top: 20%; /* 定位div至视窗的垂直中间 */
+  left: 50%; /* 定位div至视窗的水平中间 */
+  transform: translate(-50%, -50%); /* 使用transform将div向上和向左移动自身宽度和高度的一半，实现居中 */
+}
+
+.login-subtitle {
+  position: fixed; /* 使div相对于视窗固定 */
+  font-size: 50px;
+  color: #898181;;
+  top: 30%; /* 定位div至视窗的垂直中间 */
+  left: 50%; /* 定位div至视窗的水平中间 */
+  transform: translate(-50%, -50%); /* 使用transform将div向上和向左移动自身宽度和高度的一半，实现居中 */
+}
+
 .login-form {
   position: fixed; /* 使div相对于视窗固定 */
   top: 50%; /* 定位div至视窗的垂直中间 */
-  left: 50%; /* 定位div至视窗的水平中间 */
+  left: 45%; /* 定位div至视窗的水平中间 */
   transform: translate(-50%, -50%); /* 使用transform将div向上和向左移动自身宽度和高度的一半，实现居中 */
   width: 500px;
 }
