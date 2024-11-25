@@ -25,6 +25,16 @@
                     </a-form-item>
                 </a-col>
 
+                <a-col :span="8">
+                    <a-form-item :name="`group`" :label="`运输方式`">
+                        <a-select v-model:value="props.formState.group">
+                            <a-select-option value="">全部</a-select-option>
+                            <a-select-option value="HC">铁路</a-select-option>
+                            <a-select-option value="QC">公路</a-select-option>
+                        </a-select>
+                    </a-form-item>
+                </a-col>
+
             </a-row>
             
             <a-row>
