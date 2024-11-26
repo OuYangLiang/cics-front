@@ -1,5 +1,5 @@
 <template>
-<a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
+<a-layout-header style="background: #002140; color: #fff; padding: 0; text-align: center" >
     <div style="font-size: 23px;">
         承德热电煤炭数据直连管控平台
 

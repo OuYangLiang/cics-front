@@ -53,16 +53,22 @@ const selectedKeys = ref([props.selectedKeys]);
 
 <style scoped>
 .logo {
-    height: 32px;
+    height: 50px;
     margin: 16px;
     /* background: #898181; */
 }
 
-.site-layout .site-layout-background {
-    background: #fff;
+.ant-layout-sider {
+    background: #002140;
 }
 
-[data-theme='dark'] .site-layout .site-layout-background {
-    background: #141414;
+.ant-menu-dark {
+    background: #002140;
+}
+
+
+
+div.ant-layout-sider-trigger {
+    background: #002140;
 }
 </style>
