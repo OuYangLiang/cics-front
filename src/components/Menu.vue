@@ -35,21 +35,20 @@
 
         <a-menu-item key="user">
             <UsergroupAddOutlined />
-            <span><RouterLink to="/user1">用户管理</RouterLink></span>
+            <span><RouterLink to="/user">用户管理</RouterLink></span>
         </a-menu-item>
     </a-menu>
 </a-layout-sider>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router'
 import { MenuOutlined, UsergroupAddOutlined, CarOutlined, MailOutlined, InteractionOutlined, HourglassOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
-const route = useRoute()
 
+import { ref } from 'vue';
 const collapsed = ref(false);
-const selectedKeys = ref(["user"]);
 
+const props = defineProps({selectedKeys: String})
+const selectedKeys = ref([props.selectedKeys]);
 </script>
 
 <style scoped>
