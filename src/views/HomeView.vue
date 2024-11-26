@@ -34,11 +34,6 @@
                     <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
                 </a-menu-item>
 
-                <a-menu-item key="user">
-                    <UsergroupAddOutlined />
-                    <span><RouterLink to="/user">用户管理</RouterLink></span>
-                </a-menu-item>
-
                 <!-- <a-menu-item key="kjhuayandan">
                     <span><RouterLink to="/kjhuayandan">煤质快检（明细数据）</RouterLink></span>
                 </a-menu-item> -->
@@ -82,9 +77,6 @@
             <div v-else-if="selectedKeys == 'huayandan'" style="min-height: 80vh">
                 <HuayandanModule />
             </div>
-            <div v-else-if="selectedKeys == 'user'" style="min-height: 80vh">
-                <UserModule />
-            </div>
             <!-- <div v-else-if="selectedKeys == 'kjhuayandan'" style="min-height: 80vh">
                 <KjhuayandanModule />
             </div> -->
@@ -114,7 +106,6 @@ import PidaimeicaiyangModule from './pidaimeicaiyang/ModuleView.vue';
 import MeizhiModule from './meizhi/ModuleView.vue';
 import HuayandanModule from './huayandan/ModuleView.vue';
 import KjhuayandanModule from './kjhuayandan/ModuleView.vue';
-import UserModule from './user/ModuleView.vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
