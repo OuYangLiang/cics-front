@@ -41,13 +41,14 @@
             
             <a-row>
                 <a-col :span="24" style="text-align: right">
-                    <a-button type="primary" html-type="submit">Search</a-button>
+                    <a-button type="primary" html-type="submit"><SearchOutlined />Search</a-button>
                 </a-col>
             </a-row>
         </a-form>
     </div>
 </template>
 <script setup>
+import { SearchOutlined} from '@ant-design/icons-vue';
 const props = defineProps({formState: Object})
 const emit = defineEmits(['searchEvent'])
 

@@ -5,33 +5,38 @@
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
 
                 <a-menu-item key="guidaoheng">
-                    <!-- <desktop-outlined /> -->
+                    <MenuOutlined />
                     <span><RouterLink to="/guidaoheng">轨道衡台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="qichecheng">
-                    <!-- <desktop-outlined /> -->
+                    <CarOutlined />
                     <span><RouterLink to="/qichecheng">汽车衡台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="meicaiyang">
-                    <!-- <desktop-outlined /> -->
+                    <CarOutlined />
                     <span><RouterLink to="/meicaiyang">汽车机械采样</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="pidaimeicaiyang">
-                    <!-- <desktop-outlined /> -->
+                    <InteractionOutlined />
                     <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="meizhi">
-                    <!-- <desktop-outlined /> -->
+                    <HourglassOutlined />
                     <span><RouterLink to="/meizhi">煤质数据台账</RouterLink></span>
                 </a-menu-item>
 
                 <a-menu-item key="huayandan">
-                    <!-- <desktop-outlined /> -->
+                    <MailOutlined />
                     <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
+                </a-menu-item>
+
+                <a-menu-item key="user">
+                    <UsergroupAddOutlined />
+                    <span><RouterLink to="/user">用户管理</RouterLink></span>
                 </a-menu-item>
 
                 <!-- <a-menu-item key="kjhuayandan">
@@ -45,17 +50,17 @@
         <a-layout >
             <a-layout-header style="background: #141414; color: #fff; padding: 0; text-align: center" >
                 
-                <H1>
+                <div style="font-size: 23px;">
                     承德热电煤炭数据直连管控平台
 
                     <div style="float:right; padding-right: 30px;" >
-                        <a-button type="link" @click.prevent="logout">退出</a-button>
+                        <a-button type="link" @click.prevent="logout"><PoweroffOutlined />退出</a-button>
                     </div>
 
                     <div style="float:right; padding-right: 30px;" >
                         <a-typography-text type="warning">当前用户：{{ currentLogin }}</a-typography-text>
                     </div>
-                </H1>
+                </div>
                 
             </a-layout-header>
 
@@ -77,6 +82,9 @@
             <div v-else-if="selectedKeys == 'huayandan'" style="min-height: 80vh">
                 <HuayandanModule />
             </div>
+            <div v-else-if="selectedKeys == 'user'" style="min-height: 80vh">
+                <UserModule />
+            </div>
             <!-- <div v-else-if="selectedKeys == 'kjhuayandan'" style="min-height: 80vh">
                 <KjhuayandanModule />
             </div> -->
@@ -93,6 +101,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router'
+import { MenuOutlined, UsergroupAddOutlined, CarOutlined, MailOutlined, InteractionOutlined, HourglassOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
 const route = useRoute()
 
 const collapsed = ref(false);
@@ -105,6 +114,7 @@ import PidaimeicaiyangModule from './pidaimeicaiyang/ModuleView.vue';
 import MeizhiModule from './meizhi/ModuleView.vue';
 import HuayandanModule from './huayandan/ModuleView.vue';
 import KjhuayandanModule from './kjhuayandan/ModuleView.vue';
+import UserModule from './user/ModuleView.vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -119,7 +129,7 @@ const currentLogin = localStorage.getItem('currentLogin')
 .logo {
     height: 32px;
     margin: 16px;
-    background: #898181;
+    /* background: #898181; */
 }
 
 .site-layout .site-layout-background {

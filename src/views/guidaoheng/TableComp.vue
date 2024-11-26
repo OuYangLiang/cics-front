@@ -1,7 +1,7 @@
 <template>
   <a-popconfirm title="确认上报吗?" @confirm="upload()" >
       <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" >
-        上传
+        <UploadOutlined />上传
       </a-button>
   </a-popconfirm>
   <a-divider />
@@ -21,6 +21,7 @@
 </template>
 
 <script setup>
+import { UploadOutlined} from '@ant-design/icons-vue';
 import axios from 'axios'
 import { reactive, defineExpose, computed, inject} from 'vue';
 import { useRequest } from 'vue-request';
