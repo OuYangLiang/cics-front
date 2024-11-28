@@ -1,4 +1,10 @@
 <template>
+  <a-button type="primary" @click="createNew" >
+      新增用户
+  </a-button>
+  
+  <a-divider />
+  
   <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
 
   </a-table>
@@ -102,4 +108,8 @@ const rowSelection = {
   }
 };
 
+
+const createNew = () => {
+  router.push('/user/create');
+}
 </script>
