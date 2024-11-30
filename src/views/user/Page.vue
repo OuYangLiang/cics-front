@@ -1,33 +1,18 @@
 <template>
-    <a-layout style="min-height: 100vh">
-        <Menu selectedKeys="user"/>
+    <a-layout-content style="margin: 0 16px">
+        <a-breadcrumb style="margin: 16px 0">
+            
+        </a-breadcrumb>
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+            <SearchComp @searchEvent="searchEvent" :formState="formState"/>
 
-        <a-layout >
-            <Header />
+            <a-divider />
 
-            <div style="min-height: 83vh">
-                <a-layout-content style="margin: 0 16px">
-                    <a-breadcrumb style="margin: 16px 0">
-                        
-                    </a-breadcrumb>
-                    <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-                        <SearchComp @searchEvent="searchEvent" :formState="formState"/>
-
-                        <a-divider />
-
-                        <TableComp ref="mainTableRef" :searchParam="formState"  />
-                    </div>
-                </a-layout-content>
-            </div>
-
-            <Footer />
-        </a-layout>
-    </a-layout>
+            <TableComp ref="mainTableRef" :searchParam="formState"  />
+        </div>
+    </a-layout-content>
 </template>
 <script setup>
-import Menu from '@/components/Menu.vue';
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
 import TableComp from '@/views/user/TableComp.vue';
 import SearchComp from '@/views/user/SearchComp.vue';
 

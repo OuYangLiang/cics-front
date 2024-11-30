@@ -1,12 +1,9 @@
 <template>
-  <!-- <router-link to="/">首页</router-link> | 
-  <router-link to="/about">关于</router-link>| 
-  <router-link to="/login">登录</router-link> -->
-  <router-view></router-view>
+  <AppContainerLayout>
+    <RouterView />
+  </AppContainerLayout>
 </template>
 
-<script>
-
-
-
+<script setup>
+import AppContainerLayout from './layouts/AppContainerLayout.vue';
 </script>
