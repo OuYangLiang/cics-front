@@ -229,7 +229,7 @@ const {
         } else {
             alert(response.data.errorMsg);
             if (response.data.errorCode == 0) {
-              router.push('/login');
+                router.push('/login');
             }
         }
     },
