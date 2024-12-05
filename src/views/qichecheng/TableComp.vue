@@ -5,7 +5,7 @@
       </a-button>
   </a-popconfirm>
   <a-divider />
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 400 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'zmxdocNo'">
           <a @click.prevent="viewDetail(record)">{{ record.zmxdocNo }}</a>
@@ -49,13 +49,15 @@ const columns = [
     title: '序号',
     dataIndex: 'seq',
     width: 50,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '明细磅单号',
     dataIndex: 'zmxdocNo',
     width: 200,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '业务日期',
@@ -71,7 +73,7 @@ const columns = [
   },
   {
     title: '上报时间',
-    width: 100,
+    width: 200,
     dataIndex: 'uploadTime',
     align: 'center'
   },
@@ -84,12 +86,12 @@ const columns = [
   {
     title: '所属二级公司',
     dataIndex: 'ssejdw',
-    width: 100,
+    width: 150,
     align: 'center'
   },
   {
     title: '所属三级公司',
-    width: 100,
+    width: 150,
     dataIndex: 'sssjdw',
     align: 'center'
   },
@@ -107,13 +109,13 @@ const columns = [
   },
   {
     title: '收货单位名称',
-    width: 100,
+    width: 120,
     dataIndex: 'zname1',
     align: 'center'
   },
   {
     title: '收货单位编码',
-    width: 100,
+    width: 120,
     dataIndex: 'zkunnr',
     align: 'center'
   },
@@ -137,7 +139,7 @@ const columns = [
   },
   {
     title: '煤炭来源编码',
-    width: 100,
+    width: 120,
     dataIndex: 'meitanlaiyuanbm',
     align: 'center'
   },
@@ -155,25 +157,25 @@ const columns = [
   },
   {
     title: '批煤过磅开始日期',
-    width: 100,
+    width: 200,
     dataIndex: 'zbeginI',
     align: 'center'
   },
   {
     title: '批煤过磅开始时间',
-    width: 100,
+    width: 200,
     dataIndex: 'zbeginT',
     align: 'center'
   },
   {
     title: '批煤过磅结束日期',
-    width: 100,
+    width: 200,
     dataIndex: 'zendI',
     align: 'center'
   },
   {
     title: '批煤过磅结束时间',
-    width: 100,
+    width: 200,
     dataIndex: 'zendT',
     align: 'center'
   },
@@ -256,7 +258,7 @@ const pagination = computed(() => ({
     total: tableData.numOfRecords,
     current: tableData.pagee,
     pageSize: tableData.pageSize,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+    showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));
 
 function search() {

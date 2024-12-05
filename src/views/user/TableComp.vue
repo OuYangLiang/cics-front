@@ -96,7 +96,7 @@ const pagination = computed(() => ({
     total: tableData.numOfRecords,
     current: tableData.page,
     pageSize: tableData.pageSize,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+    showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));
 
 function search() {

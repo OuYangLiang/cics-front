@@ -4,7 +4,7 @@
     <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
 
         <a-menu-item key="guidaoheng">
-            <MenuOutlined />
+            <PicRightOutlined />
             <span><RouterLink to="/guidaoheng">轨道衡台账</RouterLink></span>
         </a-menu-item>
 
@@ -14,22 +14,22 @@
         </a-menu-item>
 
         <a-menu-item key="meicaiyang">
-            <CarOutlined />
+            <InsertRowBelowOutlined />
             <span><RouterLink to="/meicaiyang">汽车机械采样</RouterLink></span>
         </a-menu-item>
 
         <a-menu-item key="pidaimeicaiyang">
-            <InteractionOutlined />
+            <DownloadOutlined />
             <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样</RouterLink></span>
         </a-menu-item>
 
         <a-menu-item key="meizhi">
-            <HourglassOutlined />
+            <AuditOutlined />
             <span><RouterLink to="/meizhi">煤质数据台账</RouterLink></span>
         </a-menu-item>
 
         <a-menu-item key="huayandan">
-            <MailOutlined />
+            <ExperimentOutlined />
             <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
         </a-menu-item>
 
@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { MenuOutlined, UsergroupAddOutlined, CarOutlined, MailOutlined, InteractionOutlined, HourglassOutlined, PoweroffOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, UsergroupAddOutlined, CarOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
 const collapsed = ref(false);

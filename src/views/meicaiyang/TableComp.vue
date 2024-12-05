@@ -5,7 +5,7 @@
       </a-button>
   </a-popconfirm>
   <a-divider />
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 400 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'mybs'">
           <a @click.prevent="viewDetail(record)">{{ record.mybs }}</a>
@@ -49,13 +49,15 @@ const columns = [
     title: '序号',
     dataIndex: 'seq',
     width: 50,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '批次煤样标识',
     dataIndex: 'mybs',
     width: 200,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '业务日期',
@@ -71,7 +73,7 @@ const columns = [
   },
   {
     title: '上报时间',
-    width: 100,
+    width: 200,
     dataIndex: 'uploadTime',
     align: 'center'
   },
@@ -83,25 +85,25 @@ const columns = [
   },
   {
       title: '所属二级公司',
-      width: 100,
+      width: 150,
       dataIndex: 'ssejdw',
       align: 'center'
   },
   {
       title: '所属二级公司代码',
-      width: 100,
+      width: 150,
       dataIndex: 'ssejdwid',
       align: 'center'
   },
   {
       title: '所属三级公司',
-      width: 100,
+      width: 150,
       dataIndex: 'sssjdw',
       align: 'center'
   },
   {
       title: '所属三级公司代码',
-      width: 100,
+      width: 150,
       dataIndex: 'sssjdwid',
       align: 'center'
   },
@@ -113,7 +115,7 @@ const columns = [
   },
   {
       title: '采样单元数量',
-      width: 100,
+      width: 120,
       dataIndex: 'cydysl',
       align: 'center'
   },
@@ -125,28 +127,28 @@ const columns = [
   },
   {
       title: '数据推送单位',
-      width: 100,
+      width: 120,
       dataIndex: 'sjtsdanwei',
       align: 'center'
-  },
-  {
-      title: '数据推送日期',
-      width: 100,
-      dataIndex: 'xtscjlI',
-      align: 'center'
-  },
-  {
-      title: '数据推送时间',
-      width: 100,
-      dataIndex: 'xtscjlT',
-      align: 'center'
-  },
-  {
-      title: '数据上传方式',
-      width: 100,
-      dataIndex: 'sjscfs',
-      align: 'center'
   }
+//   {
+//       title: '数据推送日期',
+//       width: 100,
+//       dataIndex: 'xtscjlI',
+//       align: 'center'
+//   },
+//   {
+//       title: '数据推送时间',
+//       width: 100,
+//       dataIndex: 'xtscjlT',
+//       align: 'center'
+//   },
+//   {
+//       title: '数据上传方式',
+//       width: 100,
+//       dataIndex: 'sjscfs',
+//       align: 'center'
+//   }
 ];
 
 const tableData = reactive({
@@ -190,7 +192,7 @@ const pagination = computed(() => ({
     total: tableData.numOfRecords,
     current: tableData.pagee,
     pageSize: tableData.pageSize,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+    showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));
 
 function search() {

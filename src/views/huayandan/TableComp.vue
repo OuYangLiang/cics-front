@@ -5,7 +5,7 @@
       </a-button>
   </a-popconfirm>
   <a-divider />
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 400 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'uploadTime'">
           {{ format(record.uploadTime) }}
@@ -46,13 +46,15 @@ const columns = [
     title: '序号',
     dataIndex: 'seq',
     width: 50,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '批次煤样标识',
     dataIndex: 'mybs',
     width: 200,
-    align: 'center'
+    align: 'center',
+    fixed: 'left'
   },
   {
     title: '业务日期',
@@ -68,7 +70,7 @@ const columns = [
   },
   {
     title: '上报时间',
-    width: 100,
+    width: 200,
     dataIndex: 'uploadTime',
     align: 'center'
   },
@@ -92,25 +94,25 @@ const columns = [
 },
 {
     title: '所属二级公司',
-    width: 100,
+    width: 120,
     dataIndex: 'ssejdw',
     align: 'center'
 },
 {
     title: '所属二级公司代码',
-    width: 100,
+    width: 140,
     dataIndex: 'ssejdwid',
     align: 'center'
 },
 {
     title: '所属三级公司',
-    width: 100,
+    width: 120,
     dataIndex: 'sssjdw',
     align: 'center'
 },
 {
     title: '所属三级公司代码',
-    width: 100,
+    width: 140,
     dataIndex: 'sssjdwid',
     align: 'center'
 },
@@ -140,13 +142,13 @@ const columns = [
 },
 {
     title: '检测结果用途',
-    width: 100,
+    width: 120,
     dataIndex: 'jiancejieguoyt',
     align: 'center'
 },
 {
     title: '数据上传方式',
-    width: 100,
+    width: 120,
     dataIndex: 'sjscfs',
     align: 'center'
 },
@@ -158,13 +160,13 @@ const columns = [
 },
 {
     title: '检测设备名称',
-    width: 100,
+    width: 120,
     dataIndex: 'jiancesbmc',
     align: 'center'
 },
 {
     title: '检测设备ID',
-    width: 100,
+    width: 120,
     dataIndex: 'jiancesbid',
     align: 'center'
 },
@@ -200,121 +202,121 @@ const columns = [
 },
 {
     title: '全水分（%）',
-    width: 100,
+    width: 150,
     dataIndex: 'dtNgymt',
     align: 'center'
 },
 {
     title: '分析水（%）',
-    width: 100,
+    width: 150,
     dataIndex: 'dtNgymad',
     align: 'center'
 },
 {
     title: '灰分（收到基）（%）',
-    width: 100,
+    width: 180,
     dataIndex: 'dtNlcfaar',
     align: 'center'
 },
 {
     title: '灰分（空干基）（%）',
-    width: 100,
+    width: 180,
     dataIndex: 'dtNgyaad',
     align: 'center'
 },
 {
     title: '灰分（干基）（%）',
-    width: 100,
+    width: 180,
     dataIndex: 'dtNlcfad',
     align: 'center'
 },
 {
     title: '挥发分（收到基）（%）',
-    width: 100,
+    width: 250,
     dataIndex: 'dtNlcfvar',
     align: 'center'
 },
 {
     title: '挥发分（空干基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNgyvad',
     align: 'center'
 },
 {
     title: '挥发分（干基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNlcfvd',
     align: 'center'
 },
 {
     title: '挥发分（干燥无灰基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNgyvdaf',
     align: 'center'
 },
 {
     title: '硫分（收到基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNlcfstar',
     align: 'center'
 },
 {
     title: '硫分（空干基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNlcfstad',
     align: 'center'
 },
 {
     title: '硫分（干基）（%）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNlcfstd',
     align: 'center'
 },
 {
     title: '高位发热量（干基）（MJ/kg）',
-    width: 100,
+    width: 300,
     dataIndex: 'dtNqgrdmj',
     align: 'center'
 },
 {
     title: '低位发热量（收到基）（MJ/kg）',
-    width: 100,
+    width: 300,
     dataIndex: 'dtNqnetarmj',
     align: 'center'
 },
 {
     title: '低位发热量（收到基）（kcal/kg）',
-    width: 100,
+    width: 350,
     dataIndex: 'dtNqnetmarkc',
     align: 'center'
 },
 {
     title: '弹筒发热量（MJ/kg）',
-    width: 100,
+    width: 200,
     dataIndex: 'dtNqbadmj',
     align: 'center'
 },
 {
     title: '高位发热量（空气干燥基）（MJ/kg）',
-    width: 100,
+    width: 350,
     dataIndex: 'dtNqgradmj',
     align: 'center'
 },
 {
     title: '高位发热量（空气干燥基）（kcal/kg）',
-    width: 100,
+    width: 350,
     dataIndex: 'dtNqgradkc',
     align: 'center'
 },
 {
     title: '高位发热量（干燥基）（kcal/kg））',
-    width: 100,
+    width: 350,
     dataIndex: 'dtNqgrdkc',
     align: 'center'
 },
 {
     title: '高位发热量（收到基）',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNqgrarmj',
     align: 'center'
 },
@@ -326,25 +328,25 @@ const columns = [
 },
 {
     title: '灰熔融性-变形温度',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNhrdt',
     align: 'center'
 },
 {
     title: '灰熔融性-软化温度',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNhrst',
     align: 'center'
 },
 {
     title: '灰熔融性-半球温度',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNhrht',
     align: 'center'
 },
 {
     title: '灰熔融性-流动温度',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNhrft',
     align: 'center'
 },
@@ -356,85 +358,85 @@ const columns = [
 },
 {
     title: '氢（收到基）',
-    width: 100,
+    width: 130,
     dataIndex: 'dtNyshar',
     align: 'center'
 },
 {
     title: '氢（空干基）',
-    width: 100,
+    width: 130,
     dataIndex: 'dtNyshad',
     align: 'center'
 },
 {
     title: '氢（干基）',
-    width: 100,
+    width: 130,
     dataIndex: 'dtNyshd',
     align: 'center'
 },
 {
     title: '氢（干燥无灰基）',
-    width: 100,
+    width: 150,
     dataIndex: 'dtNyhdaf',
     align: 'center'
 },
 {
     title: '碳（空干基）',
-    width: 100,
+    width: 130,
     dataIndex: 'dtNyscad',
     align: 'center'
 },
 {
     title: '碳（干基）',
-    width: 100,
+    width: 130,
     dataIndex: 'dtNyscd',
     align: 'center'
 },
 {
     title: '碳（干燥无灰基）',
-    width: 100,
+    width: 150,
     dataIndex: 'dtNycdaf',
     align: 'center'
 },
 {
     title: '哈式可磨指数',
-    width: 100,
+    width: 120,
     dataIndex: 'dtHgi',
     align: 'center'
 },
 {
     title: '固定碳（空干基）（%）',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNysfcad',
     align: 'center'
 },
 {
     title: '固定碳（干基）（%）',
-    width: 100,
+    width: 190,
     dataIndex: 'dtNyshfcd',
     align: 'center'
 },
 {
     title: '快/慢灰',
-    width: 100,
+    width: 150,
     dataIndex: 'dtKuaimanhui',
     align: 'center'
 },
 {
     title: '数据推送单位',
-    width: 100,
+    width: 120,
     dataIndex: 'sjtsdanwei',
     align: 'center'
 },
 {
     title: '数据推送日期',
-    width: 100,
+    width: 120,
     dataIndex: 'xtscjlI',
     align: 'center'
 },
 {
     title: '数据推送时间',
-    width: 100,
+    width: 120,
     dataIndex: 'xtscjlT',
     align: 'center'
 }
@@ -482,7 +484,7 @@ const pagination = computed(() => ({
     total: tableData.numOfRecords,
     current: tableData.pagee,
     pageSize: tableData.pageSize,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+    showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));
 
 function search() {
