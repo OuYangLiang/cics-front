@@ -35,6 +35,12 @@ const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
+    title: '序号',
+    dataIndex: 'seq',
+    width: 50,
+    align: 'center'
+  },
+  {
     title: '用户ID',
     dataIndex: 'id',
 
@@ -61,6 +67,14 @@ const {
 } = useRequest(queryData, {
     onSuccess: (response, params) => {
         if (response.data.success) {
+            if (response.data.data.records.length > 0) {
+                let i = (response.data.data.page - 1) * response.data.data.pageSize + 1;
+
+                response.data.data.records.forEach(function(item) {
+                    item.seq = i++;
+                });
+            }
+
             tableData.numOfRecords = response.data.data.numOfRecords;
             tableData.page = response.data.data.page;
             tableData.pageSize = response.data.data.pageSize;

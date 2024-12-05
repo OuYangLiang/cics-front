@@ -46,6 +46,12 @@ const queryData = () => axios(ajaxParam);
 
 const columns = [
   {
+    title: '序号',
+    dataIndex: 'seq',
+    width: 50,
+    align: 'center'
+  },
+  {
     title: '批次煤样标识',
     dataIndex: 'mybs',
     width: 200,
@@ -522,6 +528,13 @@ const {
 } = useRequest(queryData, {
     onSuccess: (response, params) => {
         if (response.data.success) {
+            if (response.data.data.records.length > 0) {
+                let i = (response.data.data.page - 1) * response.data.data.pageSize + 1;
+
+                response.data.data.records.forEach(function(item) {
+                    item.seq = i++;
+                });
+            }
             tableData.numOfRecords = response.data.data.numOfRecords;
             tableData.page = response.data.data.page;
             tableData.pageSize = response.data.data.pageSize;
