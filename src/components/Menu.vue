@@ -3,6 +3,11 @@
     <div class="logo" />
     <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
 
+        <a-menu-item key="user">
+            <SettingOutlined />
+            <span><RouterLink to="/user">基础管理</RouterLink></span>
+        </a-menu-item>
+
         <a-menu-item key="guidaoheng">
             <PicRightOutlined />
             <span><RouterLink to="/guidaoheng">轨道衡台账</RouterLink></span>
@@ -32,20 +37,15 @@
             <ExperimentOutlined />
             <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
         </a-menu-item>
-
-        <a-menu-item key="user">
-            <UsergroupAddOutlined />
-            <span><RouterLink to="/user">用户管理</RouterLink></span>
-        </a-menu-item>
     </a-menu>
 </a-layout-sider>
 </template>
 
 <script setup>
-import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, UsergroupAddOutlined, CarOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
-const collapsed = ref(false);
+const collapsed = ref(true);
 
 const props = defineProps({selectedKeys: String})
 const selectedKeys = ref([props.selectedKeys]);

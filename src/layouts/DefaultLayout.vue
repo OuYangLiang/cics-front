@@ -9,7 +9,7 @@
                 <router-view></router-view>
             </div>
 
-            <Footer />
+            <!-- <Footer /> -->
         </a-layout>
     </a-layout>
 </template>

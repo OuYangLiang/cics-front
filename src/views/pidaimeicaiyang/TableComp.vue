@@ -53,7 +53,7 @@ const columns = [
     fixed: 'left'
   },
   {
-    title: '批次煤样标识',
+    title: '批次编号',
     dataIndex: 'mybs',
     width: 200,
     align: 'center',
@@ -84,25 +84,25 @@ const columns = [
     align: 'center'
   },
   {
-      title: '所属二级公司',
+      title: '二级公司',
       width: 120,
       dataIndex: 'ssejdw',
       align: 'center'
   },
   {
-      title: '所属二级公司代码',
+      title: '二级公司代码',
       width: 130,
       dataIndex: 'ssejdwid',
       align: 'center'
   },
   {
-      title: '所属三级公司',
+      title: '三级公司',
       width: 120,
       dataIndex: 'sssjdw',
       align: 'center'
   },
   {
-      title: '所属三级公司代码',
+      title: '三级公司代码',
       width: 130,
       dataIndex: 'sssjdwid',
       align: 'center'
@@ -189,8 +189,10 @@ const {
 });
 
 const pagination = computed(() => ({
+    showSizeChanger: true,
+    pageSizeOptions: ['10','20', '50', '100'],
     total: tableData.numOfRecords,
-    current: tableData.pagee,
+    current: tableData.page,
     pageSize: tableData.pageSize,
     showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));

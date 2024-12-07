@@ -53,7 +53,7 @@ const columns = [
     fixed: 'left'
   },
   {
-    title: '明细磅单号',
+    title: '批次编号',
     dataIndex: 'zmxdocNo',
     width: 200,
     align: 'center',
@@ -84,13 +84,13 @@ const columns = [
     align: 'center'
   },
   {
-    title: '所属二级公司',
+    title: '二级公司',
     dataIndex: 'ssejdw',
     width: 150,
     align: 'center'
   },
   {
-    title: '所属三级公司',
+    title: '三级公司',
     width: 150,
     dataIndex: 'sssjdw',
     align: 'center'
@@ -255,8 +255,10 @@ const {
 });
 
 const pagination = computed(() => ({
+  showSizeChanger: true,
+  pageSizeOptions: ['10','20', '50', '100'],
     total: tableData.numOfRecords,
-    current: tableData.pagee,
+    current: tableData.page,
     pageSize: tableData.pageSize,
     showTotal: (total, range) => `${range[0]}-${range[1]} 条数据，共 ${total} 条`
 }));

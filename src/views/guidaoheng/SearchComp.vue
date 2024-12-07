@@ -37,13 +37,15 @@
                     </a-form-item>
                 </a-col>
 
+                <a-col :span="8" style="text-align: right">
+                    <a-space>
+                        <a-button type="primary" ><SearchOutlined />Upload</a-button>
+                        <a-button type="primary" html-type="submit"><SearchOutlined />Search</a-button>
+                    </a-space>
+                </a-col>
+
             </a-row>
             
-            <a-row>
-                <a-col :span="24" style="text-align: right">
-                    <a-button type="primary" html-type="submit"><SearchOutlined />Search</a-button>
-                </a-col>
-            </a-row>
         </a-form>
     </div>
 </template>

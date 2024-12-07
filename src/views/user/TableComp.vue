@@ -93,6 +93,8 @@ const {
 });
 
 const pagination = computed(() => ({
+    showSizeChanger: true,
+    pageSizeOptions: ['10','20', '50', '100'],
     total: tableData.numOfRecords,
     current: tableData.page,
     pageSize: tableData.pageSize,
