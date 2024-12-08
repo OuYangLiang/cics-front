@@ -1,10 +1,4 @@
 <template>
-  <a-popconfirm title="确认上报吗?" @confirm="upload()" >
-      <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" >
-        <UploadOutlined />上传
-      </a-button>
-  </a-popconfirm>
-  <a-divider />
   <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'zmxdocNo'">
@@ -21,7 +15,7 @@
 </template>
 
 <script setup>
-import { UploadOutlined} from '@ant-design/icons-vue';
+// import { UploadOutlined} from '@ant-design/icons-vue';
 import axios from 'axios'
 import { reactive, defineExpose, computed, inject} from 'vue';
 import { useRequest } from 'vue-request';
@@ -31,7 +25,7 @@ const cicsUrl = inject('cicsUrl')
 
 const router = useRouter()
 const props = defineProps({searchParam: Object})
-defineExpose({search});
+defineExpose({search, upload});
 const emit = defineEmits(['viewDetail'])
 
 const ajaxParam = reactive({
@@ -280,11 +274,8 @@ function formatywrq(param) {
 }
 
 const uploadState = reactive({
-  selectedRowKeys: [],
-  loading: false
+  selectedRowKeys: []
 });
-
-const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -293,8 +284,8 @@ const rowSelection = {
 };
 
 import { notification } from 'ant-design-vue';
-const upload = () => {
-    uploadState.loading = true;
+function upload() {
+    props.searchParam.loading = true;
     axios({
         method: 'post',
         url: cicsUrl + '/guidaoheng/upload',
@@ -329,10 +320,10 @@ const upload = () => {
             });
         }
         search();
-        uploadState.loading = false;
+        props.searchParam.loading = false;
     }).catch(function (error) {
-        uploadState.loading = false;
         console.log(error);
+        props.searchParam.loading = false;
     });
 };
 

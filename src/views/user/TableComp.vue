@@ -1,13 +1,5 @@
 <template>
-  <a-button type="primary" @click="createNew" >
-      新增用户
-  </a-button>
-  
-  <a-divider />
-  
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
-
-  </a-table>
+  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered />
 </template>
 
 <script setup>
@@ -112,11 +104,8 @@ const handleTableChange = (pag, filters, sorter) => {
 };
 
 const uploadState = reactive({
-  selectedRowKeys: [],
-  loading: false
+  selectedRowKeys: []
 });
-
-const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -124,8 +113,4 @@ const rowSelection = {
   }
 };
 
-
-const createNew = () => {
-  router.push('/user/create');
-}
 </script>

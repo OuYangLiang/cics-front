@@ -6,8 +6,6 @@
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
             <SearchComp @searchEvent="searchEvent" :formState="formState"/>
 
-            <a-divider />
-
             <TableComp ref="mainTableRef" :searchParam="formState"  />
         </div>
     </a-layout-content>

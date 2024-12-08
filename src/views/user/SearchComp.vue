@@ -9,12 +9,15 @@
                     </a-form-item>
                 </a-col>
 
-            </a-row>
-            
-            <a-row>
-                <a-col :span="24" style="text-align: right">
-                    <a-button type="primary" html-type="submit">Search</a-button>
+                <a-col :span="16" style="text-align: right">
+                    <a-space>
+                        <a-button type="primary" @click="createNew" >
+                            新增用户
+                        </a-button>
+                        <a-button type="primary" html-type="submit">Search</a-button>
+                    </a-space>
                 </a-col>
+
             </a-row>
         </a-form>
     </div>
@@ -31,6 +34,12 @@ const onFinish = () => {
     }
     
 };
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const createNew = () => {
+  router.push('/user/create');
+}
 </script>
 <style scoped>
 .ant-form {

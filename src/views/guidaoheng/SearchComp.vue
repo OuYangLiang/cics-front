@@ -39,7 +39,11 @@
 
                 <a-col :span="8" style="text-align: right">
                     <a-space>
-                        <a-button type="primary" ><SearchOutlined />Upload</a-button>
+                        <a-popconfirm title="确认上报吗?" @confirm="upload" >
+                            <a-button type="primary" :loading="props.formState.loading" >
+                                <UploadOutlined />上传
+                            </a-button>
+                        </a-popconfirm>
                         <a-button type="primary" html-type="submit"><SearchOutlined />Search</a-button>
                     </a-space>
                 </a-col>
@@ -50,9 +54,9 @@
     </div>
 </template>
 <script setup>
-import { SearchOutlined} from '@ant-design/icons-vue';
+import { SearchOutlined, UploadOutlined} from '@ant-design/icons-vue';
 const props = defineProps({formState: Object})
-const emit = defineEmits(['searchEvent'])
+const emit = defineEmits(['searchEvent', 'uploadEvent'])
 
 const onFinish = () => {
     try {
@@ -62,6 +66,14 @@ const onFinish = () => {
     }
     
 };
+
+const upload = () => {
+    try {
+        emit("uploadEvent");
+    } catch (e) {
+        console.log(e);
+    }
+}
 </script>
 <style scoped>
 .ant-form {

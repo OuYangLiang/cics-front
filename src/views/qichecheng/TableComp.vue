@@ -1,9 +1,4 @@
 <template>
-  <a-popconfirm title="确认上报吗?" @confirm="upload()" >
-      <a-button type="primary" :disabled="!hasSelected" :loading="uploadState.loading" >
-        上传
-      </a-button>
-  </a-popconfirm>
   <a-divider />
   <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
@@ -30,7 +25,7 @@ const cicsUrl = inject('cicsUrl')
 
 const router = useRouter()
 const props = defineProps({searchParam: Object})
-defineExpose({search});
+defineExpose({search, upload});
 const emit = defineEmits(['viewDetail'])
 
 const ajaxParam = reactive({
@@ -290,11 +285,8 @@ function formatywrq(param) {
 }
 
 const uploadState = reactive({
-  selectedRowKeys: [],
-  loading: false
+  selectedRowKeys: []
 });
-
-const hasSelected = computed(() => uploadState.selectedRowKeys.length > 0);
 
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
@@ -303,8 +295,8 @@ const rowSelection = {
 };
 
 import { notification } from 'ant-design-vue';
-const upload = () => {
-    uploadState.loading = true;
+function upload() {
+    props.searchParam.loading = true;
     axios({
         method: 'post',
         url: cicsUrl + '/qichecheng/upload',
@@ -339,9 +331,9 @@ const upload = () => {
             });
         }
         search();
-        uploadState.loading = false;
+        props.searchParam.loading = false;
     }).catch(function (error) {
-        uploadState.loading = false;
+        props.searchParam.loading = false;
         console.log(error);
     });
 };
