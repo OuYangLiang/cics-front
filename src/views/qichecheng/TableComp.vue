@@ -1,5 +1,4 @@
 <template>
-  <a-divider />
   <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :scroll="{ x: 1500, y: 800 }" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered>
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'zmxdocNo'">

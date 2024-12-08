@@ -13,7 +13,9 @@
                         <a-input v-model:value="props.formState.zmxdocNo" placeholder="请输入明细磅单号"></a-input>
                     </a-form-item>
                 </a-col>
-
+            </a-row>
+            
+            <a-row>
                 <a-col :span="8">
                     <a-form-item :name="`uploadStatus`" :label="`上报状态`">
                         <a-select v-model:value="props.formState.uploadStatus">
@@ -24,10 +26,8 @@
                         </a-select>
                     </a-form-item>
                 </a-col>
-            </a-row>
-            
-            <a-row>
-                <a-col :span="24" style="text-align: right">
+
+                <a-col :span="16" style="text-align: right">
                     <a-space>
                         <a-popconfirm title="确认上报吗?" @confirm="upload" >
                             <a-button type="primary" :loading="props.formState.loading" >
