@@ -37,6 +37,12 @@
 
                 <a-col :span="16" style="text-align: right">
                     <a-space>
+                        <a-popconfirm title="确认同步吗?" @confirm="sync" >
+                            <a-button type="primary" :loading="syncing" >
+                                <CloudDownloadOutlined />同步
+                            </a-button>
+                        </a-popconfirm>
+                        
                         <a-popconfirm title="确认上报吗?" @confirm="upload" >
                             <a-button type="primary" :loading="props.formState.loading" >
                                 <UploadOutlined />上传
@@ -52,9 +58,45 @@
     </div>
 </template>
 <script setup>
-import { SearchOutlined, UploadOutlined} from '@ant-design/icons-vue';
+import { ref, inject} from 'vue'
+import { SearchOutlined, UploadOutlined, CloudDownloadOutlined} from '@ant-design/icons-vue';
 const props = defineProps({formState: Object})
 const emit = defineEmits(['searchEvent', 'uploadEvent'])
+
+import { notification } from 'ant-design-vue';
+import axios from 'axios'
+const cicsUrl = inject('cicsUrl')
+const syncing = ref(false);
+function sync() {
+    syncing.value = true;
+    axios({
+        method: 'post',
+        url: cicsUrl + '/meizhi/sync',
+        headers: {
+            "Authorization":localStorage.getItem('token')
+        }
+    }).then(function (response) {
+        const resp = response.data;
+        if (resp.success) {
+            notification.success({
+                message: '同步成功',
+                description: '成功同步' + resp.data + '条数据。',
+                duration: 20,
+            });
+        } else {
+            notification.error({
+                message: '错误',
+                description: resp.errorMsg,
+                duration: 20,
+            });
+        }
+        emit("searchEvent");
+        syncing.value = false;
+    }).catch(function (error) {
+        console.log(error);
+        syncing.value = false;
+    });
+};
 
 const onFinish = () => {
     try {
