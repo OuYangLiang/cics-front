@@ -19,7 +19,7 @@ import Detail from '@/views/qichecheng/Detail.vue';
 import { ref, reactive } from 'vue'
 import moment from 'moment';
 
-const formState = reactive({ "loading":false, "page":1, "pageSize":10, uploadStatus:'', ywrqRange: [moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')]})
+const formState = reactive({ "loading":false, "page":1, "pageSize":20, uploadStatus:'', ywrqRange: [moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')]})
 
 const detailControl = reactive({"visible":false, "record": {}})
 

@@ -59,16 +59,14 @@ const selectedKeys = ref([props.selectedKeys]);
 }
 
 .ant-layout-sider {
-    background: #002140;
+    background: rgb(1, 117, 219);
 }
 
 .ant-menu-dark {
-    background: #002140;
+    background: rgb(1, 117, 219);
 }
 
-
-
-div.ant-layout-sider-trigger {
-    background: #002140;
+.ant-layout-sider-trigger {
+    background: rgb(1, 117, 219) !important;
 }
 </style>

@@ -16,7 +16,7 @@ import SearchComp from '@/views/huayandan/SearchComp.vue';
 
 import { ref, reactive } from 'vue'
 import moment from 'moment';
-const formState = reactive({ "loading":false, "page":1, "pageSize":10, group:'', uploadStatus:'', ywrqRange: [moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')]})
+const formState = reactive({ "loading":false, "page":1, "pageSize":20, group:'', uploadStatus:'', ywrqRange: [moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')]})
 
 const mainTableRef = ref();
 

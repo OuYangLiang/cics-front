@@ -1,14 +1,14 @@
 <template>
-<a-layout-header style="background: #002140; color: #fff; padding: 0; text-align: center" >
+<a-layout-header style="background: rgb(1, 117, 219); color: #fff; padding: 0; text-align: center" >
     <div style="font-size: 23px;">
         承德热电煤炭数据直连管控平台
 
         <div style="float:right; padding-right: 30px;" >
-            <a-button type="link" @click.prevent="logout"><PoweroffOutlined />退出</a-button>
+            <a-button @click.prevent="logout" ><PoweroffOutlined />退出</a-button>
         </div>
 
         <div style="float:right; padding-right: 30px;" >
-            <a-typography-text type="warning">当前用户：{{ currentLogin }}</a-typography-text>
+            <a-typography-text type="info">当前用户：{{ currentLogin }}</a-typography-text>
         </div>
     </div>
 </a-layout-header>
