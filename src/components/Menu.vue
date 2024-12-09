@@ -37,6 +37,11 @@
             <ExperimentOutlined />
             <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
         </a-menu-item>
+
+        <a-menu-item key="kjhuayandan">
+            <AuditOutlined />
+            <span><RouterLink to="/kjhuayandan">煤质快检化验台账</RouterLink></span>
+        </a-menu-item>
     </a-menu>
 </a-layout-sider>
 </template>

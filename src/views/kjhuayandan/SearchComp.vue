@@ -3,14 +3,20 @@
         <a-form ref="formRef" name="advanced_search" class="ant-advanced-search-form" :model="formState" @finish="onFinish">
             <a-row :gutter="24">
                 <a-col :span="8">
+                    <a-form-item :name="`ywrqRange`" :label="`业务日期`">
+                        <a-range-picker v-model:value="props.formState.ywrqRange" valueFormat="YYYY-MM-DD" format="YYYY-MM-DD" />
+                    </a-form-item>
+                </a-col>
+
+                <a-col :span="8">
                     <a-form-item :name="`mybs`" :label="`批次煤样标识`">
-                        <a-input v-model:value="formState.mybs" placeholder="请输入批次煤样标识"></a-input>
+                        <a-input v-model:value="props.formState.mybs" placeholder="请输入批次煤样标识"></a-input>
                     </a-form-item>
                 </a-col>
 
                 <a-col :span="8">
                     <a-form-item :name="`uploadStatus`" :label="`上报状态`">
-                        <a-select v-model:value="formState.uploadStatus">
+                        <a-select v-model:value="props.formState.uploadStatus">
                             <a-select-option value="">全部</a-select-option>
                             <a-select-option value="success">上报成功</a-select-option>
                             <a-select-option value="failed">上报失败</a-select-option>
@@ -19,33 +25,52 @@
                     </a-form-item>
                 </a-col>
 
-            </a-row>
-            
-            <a-row>
-                <a-col :span="24" style="text-align: right">
-                    <a-button type="primary" html-type="submit">Search</a-button>
+                <a-col :span="8">
+                    <a-form-item :name="`group`" :label="`运输方式`">
+                        <a-select v-model:value="props.formState.group">
+                            <a-select-option value="">全部</a-select-option>
+                            <a-select-option value="HC">铁路</a-select-option>
+                            <a-select-option value="QC">公路</a-select-option>
+                        </a-select>
+                    </a-form-item>
                 </a-col>
+
+                <a-col :span="16" style="text-align: right">
+                    <a-space>
+                        <a-popconfirm title="确认上报吗?" @confirm="upload" >
+                            <a-button type="primary" :loading="props.formState.loading" >
+                                <UploadOutlined />上传
+                            </a-button>
+                        </a-popconfirm>
+                        <a-button type="primary" html-type="submit"><SearchOutlined />Search</a-button>
+                    </a-space>
+                </a-col>
+                
             </a-row>
         </a-form>
     </div>
 </template>
 <script setup>
-import { reactive, ref } from 'vue';
-const formState = reactive({uploadStatus:''});
-
-const emit = defineEmits(['searchEvent'])
+import { SearchOutlined, UploadOutlined} from '@ant-design/icons-vue';
+const props = defineProps({formState: Object})
+const emit = defineEmits(['searchEvent', 'uploadEvent'])
 
 const onFinish = () => {
     try {
-        emit("searchEvent", formState);
+        emit("searchEvent");
     } catch (e) {
         console.log(e);
     }
     
 };
 
-const dateFormat = 'YYYY-MM-DD';
-const valueFormat = 'YYYY-MM-DD';
+const upload = () => {
+    try {
+        emit("uploadEvent");
+    } catch (e) {
+        console.log(e);
+    }
+}
 </script>
 <style scoped>
 .ant-form {

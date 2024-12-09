@@ -66,7 +66,14 @@ const routes = [
       meta: {
           layout: DefaultLayout
       }
-  }
+  },
+  { 
+    path: '/kjhuayandan', 
+    component: () => import('../views/kjhuayandan/Page.vue'),
+    meta: {
+        layout: DefaultLayout
+    }
+}
 ]
 
 const router = createRouter({
