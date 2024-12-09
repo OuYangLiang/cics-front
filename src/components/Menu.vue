@@ -29,12 +29,12 @@
         </a-menu-item>
 
         <a-menu-item key="meizhi">
-            <AuditOutlined />
+            <ExperimentOutlined />
             <span><RouterLink to="/meizhi">煤质数据台账</RouterLink></span>
         </a-menu-item>
 
         <a-menu-item key="huayandan">
-            <ExperimentOutlined />
+            <SolutionOutlined />
             <span><RouterLink to="/huayandan">化验单台账</RouterLink></span>
         </a-menu-item>
 
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
 const collapsed = ref(true);
