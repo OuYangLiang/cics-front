@@ -1,5 +1,5 @@
 <template>
-<a-layout-header style="background: rgb(1, 117, 219); color: #fff; padding: 0; text-align: center" >
+<a-layout-header style="background: #3F9FCC; padding: 0; text-align: center" theme="light">
     <div style="font-size: 23px;">
         承德热电煤炭数据直连管控平台
 
@@ -27,18 +27,3 @@ function logout() {
 }
 </script>
 
-<style scoped>
-.logo {
-    height: 32px;
-    margin: 16px;
-    /* background: #898181; */
-}
-
-.site-layout .site-layout-background {
-    background: #fff;
-}
-
-[data-theme='dark'] .site-layout .site-layout-background {
-    background: #141414;
-}
-</style>

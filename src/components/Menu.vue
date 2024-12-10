@@ -1,7 +1,7 @@
 <template>
-<a-layout-sider v-model:collapsed="collapsed" collapsible>
+<a-layout-sider v-model:collapsed="collapsed" collapsible theme="light">
     <div class="logo" />
-    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+    <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline">
 
         <a-menu-item key="user">
             <SettingOutlined />
@@ -56,22 +56,3 @@ const props = defineProps({selectedKeys: String})
 const selectedKeys = ref([props.selectedKeys]);
 </script>
 
-<style scoped>
-.logo {
-    height: 50px;
-    margin: 16px;
-    /* background: #898181; */
-}
-
-.ant-layout-sider {
-    background: rgb(1, 117, 219);
-}
-
-.ant-menu-dark {
-    background: rgb(1, 117, 219);
-}
-
-.ant-layout-sider-trigger {
-    background: rgb(1, 117, 219) !important;
-}
-</style>
