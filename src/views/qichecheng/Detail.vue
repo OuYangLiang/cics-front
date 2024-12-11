@@ -8,10 +8,11 @@
             <a-descriptions-item label="所属三级公司代码">{{ props.detailControl.record.sssjdwid }}</a-descriptions-item>
         </a-descriptions>
 
-        <a-table :columns="columns" :data-source="props.detailControl.record.dtData" :scroll="{ x: 1000, y: false }" size="small" bordered />
+        <a-table :columns="columns" :data-source="props.detailControl.record.dtData" :scroll="{ x: 1000, y: true }" :pagination="pagination" size="small" bordered />
     </a-drawer>
 </template>
 <script setup>
+const pagination = false;
 const props = defineProps({detailControl: Object})
 
 const onClose = () => {
