@@ -18,6 +18,13 @@ const routes = [
           layout: DefaultLayout
       }
   },
+  {
+      path: '/setting', 
+      component: () => import('../views/setting/Page.vue'),
+      meta: {
+          layout: DefaultLayout
+      }
+  },
   { 
       path: '/user/create', 
       component: () => import('../views/user/Create.vue'),

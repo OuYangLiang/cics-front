@@ -3,10 +3,27 @@
     <div class="logo" />
     <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline">
 
-        <a-menu-item key="user">
+        <a-sub-menu key="config">
+            <template #title>
+                <span>
+                    <SettingOutlined />
+                    <span>基础管理</span>
+                </span>
+            </template>
+            <a-menu-item key="setting">
+                <SettingOutlined />
+                <span><RouterLink to="/setting">配置管理</RouterLink></span>
+            </a-menu-item>
+            <a-menu-item key="user">
+                <SettingOutlined />
+                <span><RouterLink to="/user">用户管理</RouterLink></span>
+            </a-menu-item>
+        </a-sub-menu>
+
+        <!-- <a-menu-item key="user">
             <SettingOutlined />
             <span><RouterLink to="/user">基础管理</RouterLink></span>
-        </a-menu-item>
+        </a-menu-item> -->
 
         <a-menu-item key="guidaoheng">
             <PicRightOutlined />
