@@ -1,5 +1,13 @@
 <template>
-  <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered />
+    <a-table :row-selection="rowSelection" rowKey="id" :columns="columns" :data-source="tableData.records" :pagination="pagination" :loading="loading" @change="handleTableChange" size="small" bordered >
+      <template #bodyCell="{ column, text, record }">
+        <template v-if="column.dataIndex === 'operation' && record.username != currentLogin">
+            <a-popconfirm title="确认删除?" @confirm="onDelete(record.id)" >
+                <a>删除</a>
+            </a-popconfirm>
+        </template>
+      </template>
+    </a-table>
 </template>
 
 <script setup>
@@ -40,10 +48,14 @@ const columns = [
   },
   {
     title: '用户名',
-
     dataIndex: 'username',
     align: 'center'
-  }
+  },
+  {
+    title: '操作',
+    dataIndex: 'operation',
+    align: 'center'
+  },
 ];
 
 const tableData = reactive({
@@ -111,6 +123,44 @@ const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     uploadState.selectedRowKeys = selectedRowKeys;
   }
+};
+
+const currentLogin = localStorage.getItem('currentLogin')
+
+const removeUser = (data) => {
+    axios({
+        method: 'post',
+        url: cicsUrl + '/user/remove',
+        headers: {
+            "Authorization":localStorage.getItem('token')
+        },
+        data: {"userId": data}
+    }).then(function (response) {
+        if (response.data.success) {
+            search();
+        } else {
+            if (response.data.errorCode == 0) {
+                router.push('/login');
+            }
+
+            notification.error({
+                message: '错误',
+                description: response.data.errorMsg,
+                duration: 20,
+            });
+        }
+    }).catch(function (error) {
+        console.log(error);
+        notification.error({
+            message: '异常',
+            description: response.data.errorMsg,
+            duration: 20,
+        });
+    });
+};
+
+const onDelete = userId => {
+    removeUser(userId);
 };
 
 </script>

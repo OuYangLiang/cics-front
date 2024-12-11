@@ -11,11 +11,11 @@
                 </span>
             </template>
             <a-menu-item key="setting">
-                <SettingOutlined />
+                <FormOutlined />
                 <span><RouterLink to="/setting">配置管理</RouterLink></span>
             </a-menu-item>
             <a-menu-item key="user">
-                <SettingOutlined />
+                <UsergroupAddOutlined />
                 <span><RouterLink to="/user">用户管理</RouterLink></span>
             </a-menu-item>
         </a-sub-menu>
@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined, UsergroupAddOutlined, FormOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
 const collapsed = ref(true);
