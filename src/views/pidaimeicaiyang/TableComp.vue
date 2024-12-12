@@ -125,18 +125,18 @@ const columns = [
       dataIndex: 'sjtsdanwei',
       align: 'center'
   },
-  {
-      title: '数据推送日期',
-      width: 120,
-      dataIndex: 'xtscjlI',
-      align: 'center'
-  },
-  {
-      title: '数据推送时间',
-      width: 120,
-      dataIndex: 'xtscjlT',
-      align: 'center'
-  },
+//   {
+//       title: '数据推送日期',
+//       width: 120,
+//       dataIndex: 'xtscjlI',
+//       align: 'center'
+//   },
+//   {
+//       title: '数据推送时间',
+//       width: 120,
+//       dataIndex: 'xtscjlT',
+//       align: 'center'
+//   },
   {
       title: '数据上传方式',
       width: 120,

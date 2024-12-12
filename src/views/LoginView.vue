@@ -27,7 +27,7 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue';
+import { reactive, inject } from 'vue';
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { notification } from 'ant-design-vue';
@@ -40,10 +40,11 @@ const formState = reactive({
   remember: true,
 });
 
+const cicsUrl = inject('cicsUrl')
 const onFinish = values => {
     axios({
         method: 'post',
-        url: 'http://localhost:8080/login',
+        url: cicsUrl + '/login',
         data: {
             username: values.username,
             password: values.password

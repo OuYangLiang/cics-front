@@ -20,11 +20,6 @@
             </a-menu-item>
         </a-sub-menu>
 
-        <!-- <a-menu-item key="user">
-            <SettingOutlined />
-            <span><RouterLink to="/user">基础管理</RouterLink></span>
-        </a-menu-item> -->
-
         <a-menu-item key="guidaoheng">
             <PicRightOutlined />
             <span><RouterLink to="/guidaoheng">轨道衡台账</RouterLink></span>
@@ -59,17 +54,26 @@
             <AuditOutlined />
             <span><RouterLink to="/kjhuayandan">煤质快检化验台账</RouterLink></span>
         </a-menu-item>
+
+        <a-menu-item key="">
+            <IeOutlined />
+            <span @click="goOut" >燃料智能化管控系统</span>
+        </a-menu-item>
     </a-menu>
 </a-layout-sider>
 </template>
 
 <script setup>
-import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined, UsergroupAddOutlined, FormOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined, UsergroupAddOutlined, FormOutlined, IeOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
 const collapsed = ref(true);
 
 const props = defineProps({selectedKeys: String})
 const selectedKeys = ref([props.selectedKeys]);
+
+function goOut() {
+    window.location.href="http://10.157.3.133/grm/fuel.portal/mis/login/login.html"
+}
 </script>
 
