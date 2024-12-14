@@ -57,7 +57,7 @@
 
         <a-menu-item key="">
             <IeOutlined />
-            <span @click="goOut" >燃料智能化管控系统</span>
+            <span><a href="http://10.157.3.133/grm/fuel.portal/mis/login/login.html" target="_blank">燃料智能化管控系统</a></span>
         </a-menu-item>
     </a-menu>
 </a-layout-sider>
@@ -71,9 +71,5 @@ const collapsed = ref(true);
 
 const props = defineProps({selectedKeys: String})
 const selectedKeys = ref([props.selectedKeys]);
-
-function goOut() {
-    window.location.href="http://10.157.3.133/grm/fuel.portal/mis/login/login.html"
-}
 </script>
 
