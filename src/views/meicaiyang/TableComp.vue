@@ -91,7 +91,7 @@ const columns = [
   },
   {
       title: '三级公司',
-      width: 150,
+      width: 200,
       dataIndex: 'sssjdw',
       align: 'center'
   },

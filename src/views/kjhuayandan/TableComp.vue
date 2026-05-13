@@ -46,7 +46,7 @@ const columns = [
 {
   title: '批次编号',
   dataIndex: 'mybs',
-  width: 100,
+  width: 200,
   align: 'center',
   fixed: 'left'
 },

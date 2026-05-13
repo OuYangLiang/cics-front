@@ -85,7 +85,7 @@ const columns = [
   },
   {
     title: '三级公司',
-    width: 150,
+    width: 200,
     dataIndex: 'sssjdw',
     align: 'center'
   },
@@ -127,7 +127,7 @@ const columns = [
   },
   {
     title: '煤炭来源',
-    width: 100,
+    width: 200,
     dataIndex: 'meitanlaiyuan',
     align: 'center'
   },
@@ -175,7 +175,7 @@ const columns = [
   },
   {
     title: '车队名称',
-    width: 100,
+    width: 200,
     dataIndex: 'zname1Car',
     align: 'center'
   },
@@ -199,7 +199,7 @@ const columns = [
   },
   {
     title: '主磅单号',
-    width: 100,
+    width: 200,
     dataIndex: 'zmasterNo',
     align: 'center'
   },

@@ -100,7 +100,7 @@ const columns = [
 },
 {
     title: '三级公司',
-    width: 120,
+    width: 200,
     dataIndex: 'sssjdw',
     align: 'center'
 },
@@ -418,7 +418,7 @@ const columns = [
 },
 {
     title: '数据推送单位',
-    width: 120,
+    width: 200,
     dataIndex: 'sjtsdanwei',
     align: 'center'
 }
