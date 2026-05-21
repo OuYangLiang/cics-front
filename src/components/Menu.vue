@@ -34,14 +34,14 @@
             <span><RouterLink to="/qichecheng">汽车衡台账</RouterLink></span>
         </a-menu-item>
 
-        <a-menu-item key="meicaiyang">
-            <InsertRowBelowOutlined />
-            <span><RouterLink to="/meicaiyang">汽车机械采样</RouterLink></span>
-        </a-menu-item>
-
         <a-menu-item key="pidaimeicaiyang">
             <DownloadOutlined />
             <span><RouterLink to="/pidaimeicaiyang">皮带煤流采样</RouterLink></span>
+        </a-menu-item>
+
+        <a-menu-item key="meicaiyang">
+            <InsertRowBelowOutlined />
+            <span><RouterLink to="/meicaiyang">汽车机械采样</RouterLink></span>
         </a-menu-item>
 
         <a-menu-item key="meizhi">

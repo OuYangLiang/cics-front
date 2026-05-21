@@ -5,7 +5,9 @@
         </a-form-item>
 
         <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary" :loading="loading" @click="onSubmit">提交</a-button>
+            <a-popconfirm title="确认要删除吗?" @confirm="onSubmit">
+                <a-button type="primary" :loading="loading">删除</a-button>
+            </a-popconfirm>
         </a-form-item>
     </a-form>
 </template>
