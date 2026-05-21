@@ -18,6 +18,10 @@
                 <UsergroupAddOutlined />
                 <span><RouterLink to="/user">用户管理</RouterLink></span>
             </a-menu-item>
+            <a-menu-item key="dataMgt">
+                <DatabaseOutlined />
+                <span><RouterLink to="/dataMgt">数据处理</RouterLink></span>
+            </a-menu-item>
         </a-sub-menu>
 
         <a-menu-item key="guidaoheng">
@@ -64,7 +68,7 @@
 </template>
 
 <script setup>
-import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined, UsergroupAddOutlined, FormOutlined, IeOutlined } from '@ant-design/icons-vue';
+import { PicRightOutlined, InsertRowBelowOutlined, DownloadOutlined, ExperimentOutlined, AuditOutlined, SettingOutlined, CarOutlined, SolutionOutlined, UsergroupAddOutlined, FormOutlined, IeOutlined, DatabaseOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
 const collapsed = ref(true);

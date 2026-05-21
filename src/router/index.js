@@ -19,6 +19,13 @@ const routes = [
       }
   },
   {
+      path: '/dataMgt',
+      component: () => import('../views/dataMgt/Page.vue'),
+      meta: {
+          layout: DefaultLayout
+      }
+  },
+  {
       path: '/setting', 
       component: () => import('../views/setting/Page.vue'),
       meta: {
